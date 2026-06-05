@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoveApp — The Right Words, When You Need Them Most</title>
+<meta name="description" content="LoveApp gives you personalized, communication-science–informed message suggestions to help you reconnect and say what you mean. An educational communication tool — not therapy, and results are not guaranteed.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     LoveApp v2 — warm-editorial craft (Open Design) + proven
+     direct-response structure modeled on two validated PT-BR
+     sales pages (Energia do Homem / Cátia Day):
+       VSL slot · repeated offer · trust bar · multi-device ·
+       authority/credibility · honest price-anchor + value stack ·
+       payment security · floating support.
+     Honesty held: no fake scarcity, no fabricated testimonials,
+     disclaimers preserved. Owner-fill slots are marked TODO.
+     ============================================================ */
+  :root{
+    /* color-expert · OKLCH roles (perceptually-uniform reference; hex kept for support):
+       paper oklch(97% .012 80) · ink oklch(22% .03 0) · rose(accent) oklch(55% .17 12)
+       rose-deep oklch(46% .16 10) · gold(secondary) oklch(65% .09 75) · green(trust) oklch(52% .12 160).
+       Accent discipline: rose is the ONE accent; gold is metadata/marks only. All body text ≥ 4.5:1 on paper. */
+    --paper:#FBF6EF; --paper-2:#F4EADB; --surface:#FFFFFF;
+    --ink:#241319; --soft-ink:#6F5A62; --hair:rgba(46,15,28,.12);
+    --plum:#2C0F1B; --plum-2:#3A1322;
+    --rose:#C1395C; --rose-deep:#9E2949; --rose-tint:#F6E2E7; --rose-mist:#FCEEF1;
+    --gold:#B98A48; --gold-soft:#E7D4AE;
+    --green:#1E7A54; --green-soft:#E8F4EE; --green-line:#CBE6D7;
+    --serif:'DM Serif Display',Georgia,serif;
+    --fraunces:'Fraunces',Georgia,serif;
+    --sans:'DM Sans',-apple-system,system-ui,sans-serif;
+    --measure:64ch; --maxw:840px; --wide:1060px;
+    --ease:cubic-bezier(.23,1,.32,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:28px;}
+  [id]{scroll-margin-top:28px;}
+  body{font-family:var(--sans);background:var(--paper);color:var(--ink);
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;overflow-x:hidden;}
+  ::selection{background:var(--rose-tint);color:var(--plum);}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:4px;}
+  .shell{max-width:var(--wide);margin:0 auto;background:var(--paper);position:relative;}
+  .inner{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .measure{max-width:var(--measure);}
+
+  .label{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--rose-deep);}
+  .label .mark{width:22px;height:1px;background:var(--gold);}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--plum);}
+  h1{font-size:clamp(38px,6vw,64px);line-height:1.04;letter-spacing:-.03em;}
+  h2{font-size:clamp(30px,4.6vw,46px);line-height:1.1;letter-spacing:-.02em;}
+  em.fr{font-family:var(--fraunces);font-style:italic;font-weight:400;color:var(--rose-deep);}
+  .deck{font-size:clamp(18px,2.3vw,21px);line-height:1.5;color:var(--soft-ink);font-weight:400;}
+  .lead{font-size:19px;line-height:1.65;color:var(--ink);}
+  .muted{color:var(--soft-ink);}.tiny{font-size:13.5px;line-height:1.6;}
+  p+p{margin-top:16px;}
+
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--sans);
+    font-weight:600;font-size:16px;letter-spacing:.01em;padding:16px 30px;border-radius:12px;
+    text-decoration:none;border:1px solid transparent;cursor:pointer;
+    transition:transform .14s var(--ease),background .18s var(--ease),box-shadow .18s var(--ease);}
+  .cta .arr{transition:transform .2s var(--ease);}.cta:hover .arr{transform:translateX(4px);}
+  .cta-primary{background:var(--rose);color:#fff;}
+  .cta-primary:hover{background:var(--rose-deep);transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(158,41,73,.7);}
+  .cta-ghost{background:transparent;color:var(--paper);border-color:rgba(255,255,255,.45);}
+  .cta-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px);}
+  .cta-lg{font-size:17px;padding:18px 34px;}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  .s2{transition-delay:.08s;}.s3{transition-delay:.16s;}.s4{transition-delay:.24s;}.s5{transition-delay:.32s;}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;}
+    .reveal{opacity:1;transform:none;transition:none;}html{scroll-behavior:auto;}}
+
+  section{padding:88px 0;}.pad-tight{padding-top:52px;}
+
+  /* ── HERO with VSL slot ── */
+  .hero{position:relative;color:#fff;padding:72px 28px 88px;overflow:hidden;text-align:center;
+    background:radial-gradient(120% 90% at 12% -10%,rgba(193,57,92,.42),transparent 58%),var(--plum);}
+  .hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:80px;
+    background:linear-gradient(to bottom,transparent,var(--paper));pointer-events:none;}
+  .hero-inner{position:relative;max-width:760px;margin:0 auto;}
+  .hero .label{color:var(--gold-soft);justify-content:center;}.hero .label .mark{background:var(--gold-soft);}
+  .hero h1{color:#fff;margin:22px auto 18px;max-width:17ch;}
+  .hero h1 em.fr{color:#FFD9A6;}
+  .hero .deck{color:rgba(255,255,255,.86);max-width:52ch;margin:0 auto 30px;}
+  /* VSL — replace src with your real video; placeholder keeps 16:9 */
+  .vsl{position:relative;max-width:640px;margin:0 auto 30px;border-radius:16px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 70px -30px rgba(0,0,0,.6);aspect-ratio:16/9;background:#1a0a12;}
+  .vsl iframe,.vsl video{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vsl-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:14px;color:rgba(255,255,255,.85);background:
+      radial-gradient(80% 80% at 50% 35%,rgba(193,57,92,.5),transparent 70%),#1a0a12;cursor:pointer;}
+  .vsl-ph .play{width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.94);
+    display:flex;align-items:center;justify-content:center;transition:transform .18s var(--ease);}
+  .vsl-ph:hover .play{transform:scale(1.06);}
+  .vsl-ph .play svg{width:30px;height:30px;color:var(--rose-deep);margin-left:4px;}
+  .vsl-ph small{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;}
+  .hero-sub{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;margin-top:26px;
+    font-size:13.5px;color:rgba(255,255,255,.74);}
+  .hero-sub span{display:inline-flex;align-items:center;gap:8px;}
+  .hero-sub svg{width:16px;height:16px;color:var(--gold-soft);flex-shrink:0;}
+
+  /* ── TRUST BAR (modeled on "vantagens" row) ── */
+  .trustbar{background:var(--surface);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);}
+  .trustbar .inner{max-width:var(--wide);display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-top:0;padding-bottom:0;}
+  .trust{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;
+    padding:26px 18px;border-right:1px solid var(--hair);}
+  .trust:last-child{border-right:none;}
+  .trust .ic{width:30px;height:30px;color:var(--rose-deep);}
+  .trust .ic svg{width:30px;height:30px;}
+  .trust b{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--plum);letter-spacing:.02em;}
+  .trust span{font-size:12.5px;color:var(--soft-ink);line-height:1.45;}
+  @media(max-width:680px){.trustbar .inner{grid-template-columns:1fr 1fr;}
+    .trust:nth-child(2){border-right:none;}.trust:nth-child(1),.trust:nth-child(2){border-bottom:1px solid var(--hair);}}
+
+  /* ── PAIN ── */
+  .painlist{margin-top:36px;border-top:1px solid var(--hair);}
+  .painlist .row{display:flex;gap:20px;align-items:flex-start;padding:22px 0;border-bottom:1px solid var(--hair);
+    font-size:17px;color:var(--plum-2);}
+  .painlist .ic{flex-shrink:0;width:34px;height:34px;color:var(--rose);margin-top:1px;}
+  .painlist .ic svg{width:24px;height:24px;}
+
+  /* ── STORY pull quote ── */
+  .storywrap{padding:96px 0;color:#fff;
+    background:radial-gradient(90% 70% at 84% 0%,rgba(185,138,72,.18),transparent 56%),var(--plum-2);}
+  .storywrap .label{color:var(--gold-soft);}.storywrap .label .mark{background:var(--gold-soft);}
+  .storywrap h2{color:#fff;margin:18px 0 6px;}
+  .pullquote{font-family:var(--fraunces);font-weight:300;font-style:italic;
+    font-size:clamp(26px,4vw,38px);line-height:1.28;letter-spacing:-.01em;color:#fff;margin:40px 0;max-width:24ch;}
+  .pullquote b{font-style:normal;font-weight:500;color:#FFD9A6;}
+  .story-body{max-width:var(--measure);color:rgba(255,255,255,.86);font-size:17px;}
+  .story-body p+p{margin-top:16px;}.story-body strong{color:#fff;font-weight:600;}
+  .storynote{color:rgba(255,255,255,.68);font-size:14px;margin-top:30px;max-width:60ch;}
+
+  .feature{margin-top:32px;background:var(--surface);border:1px solid var(--hair);border-radius:16px;
+    padding:36px 34px;max-width:var(--measure);}
+  .feature .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--rose-deep);margin-bottom:16px;}
+  .feature .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);}
+  .feature p{color:var(--plum-2);font-size:16.5px;margin:0;}.feature strong{font-weight:600;}
+
+  .steps{margin-top:40px;display:grid;gap:0;border-top:1px solid var(--hair);}
+  .step{display:flex;gap:28px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--hair);}
+  .step .n{flex-shrink:0;font-family:var(--serif);font-size:40px;line-height:1;color:var(--rose);width:58px;letter-spacing:-.02em;}
+  .step h4{font-size:21px;margin-bottom:6px;}
+  .step p{font-size:16px;color:var(--soft-ink);margin:0;max-width:52ch;}
+
+  .cards{margin-top:36px;display:grid;gap:18px;}
+  @media(min-width:680px){.cards{grid-template-columns:1fr 1fr;}}
+  .card{background:var(--surface);border:1px solid var(--hair);border-radius:16px;padding:28px 26px;
+    transition:transform .18s var(--ease),box-shadow .18s var(--ease);}
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -22px rgba(44,15,27,.45);}
+  .card .ic{width:40px;height:40px;color:var(--rose-deep);margin-bottom:16px;}.card .ic svg{width:28px;height:28px;}
+  .card h4{font-size:19px;margin-bottom:7px;}.card p{font-size:15px;color:var(--soft-ink);margin:0;line-height:1.6;}
+
+  /* ── MULTI-DEVICE strip ── */
+  .device{background:var(--paper-2);text-align:center;}
+  .device h2{margin-bottom:14px;}
+  .device .row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+  .device .dv{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--soft-ink);font-size:13.5px;font-weight:500;}
+  .device .dv svg{width:38px;height:38px;color:var(--rose-deep);}
+
+  .who{margin-top:36px;display:grid;gap:0;border-top:1px solid var(--hair);max-width:var(--measure);}
+  .who-row{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--hair);
+    font-size:17px;color:var(--plum-2);}
+  .who-row .chk{flex-shrink:0;width:24px;height:24px;color:var(--green);margin-top:2px;}.who-row .chk svg{width:24px;height:24px;}
+  .who-row .chk.x{color:var(--soft-ink);opacity:.8;}
+
+  /* ── VALUE STACK (bonus + value column) ── */
+  .bonus{margin-top:36px;border-top:1px solid var(--hair);}
+  .bonus-item{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;
+    padding:24px 0;border-bottom:1px solid var(--hair);}
+  .bonus-item .bi{display:flex;gap:18px;align-items:flex-start;}
+  .bonus-item .gift{flex-shrink:0;width:38px;height:38px;color:var(--gold);margin-top:2px;}.bonus-item .gift svg{width:28px;height:28px;}
+  .bonus-item h4{font-size:18px;margin-bottom:4px;font-family:var(--sans);font-weight:600;color:var(--plum);}
+  .bonus-item h4 span{color:var(--soft-ink);font-weight:400;font-size:14px;}
+  .bonus-item p{font-size:14.5px;color:var(--soft-ink);margin:0;max-width:42ch;}
+  .bonus-item .tag{flex-shrink:0;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--soft-ink);
+    border:1px solid var(--hair);padding:5px 12px;border-radius:30px;white-space:nowrap;}
+  .bonus-item .tag.core{color:var(--green);border-color:var(--green-line);background:var(--green-soft);}
+  .stack-total{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:24px 0 0;}
+  .stack-total .lbl{font-family:var(--serif);font-size:22px;color:var(--plum);}
+  .stack-total .val{font-family:var(--serif);font-size:22px;color:var(--soft-ink);text-decoration:line-through;text-decoration-color:var(--rose);}
+
+  /* ── OFFER with anchor ── */
+  .offerwrap{padding:96px 0;background:var(--paper-2);}
+  .price-box{background:var(--surface);border:1px solid var(--hair);border-radius:20px;padding:48px 34px;
+    text-align:center;max-width:560px;margin:0 auto;}
+  .price-box .label{justify-content:center;margin-bottom:20px;}
+  .anchor{font-size:16px;color:var(--soft-ink);}
+  .anchor s{text-decoration-color:var(--rose);}
+  .amt{font-family:var(--serif);font-size:84px;line-height:1;color:var(--rose-deep);letter-spacing:-.03em;margin-top:6px;}
+  .amt small{font-size:30px;vertical-align:super;color:var(--rose);margin-right:2px;}
+  .once{font-size:14.5px;color:var(--soft-ink);margin-top:12px;}
+  .perday{display:inline-block;margin-top:14px;font-size:13px;font-weight:600;color:var(--green);
+    background:var(--green-soft);border:1px solid var(--green-line);padding:7px 16px;border-radius:30px;}
+  .price-box .cta{width:100%;margin-top:26px;}
+  .pay{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:18px;color:var(--soft-ink);font-size:12.5px;}
+  .pay svg{width:16px;height:16px;color:var(--green);}
+  .pay-icons{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap;}
+  .pay-icons span{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--soft-ink);
+    border:1px solid var(--hair);border-radius:6px;padding:5px 9px;background:var(--paper);}
+  /* ── payment method badges (gray chip + white logo) ── */
+  .paybadges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
+  .pbadge{width:54px;height:34px;border-radius:7px;background:#B4B8C0;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .pbadge svg{height:13px;width:auto;display:block;}
+  .pbadge .wm{color:#fff;font-weight:800;font-size:12px;line-height:1;letter-spacing:.3px;}
+  .pbadge .wm.it{font-style:italic;}
+  .pbadge .amex{border:1px solid rgba(255,255,255,.95);border-radius:3px;padding:3px 4px;
+    font-size:5.5px;font-weight:800;color:#fff;letter-spacing:.2px;line-height:1.05;text-align:center;}
+  .guarantee{display:flex;gap:22px;align-items:center;max-width:560px;margin:24px auto 0;
+    background:var(--green-soft);border:1px solid var(--green-line);border-radius:16px;padding:26px 28px;}
+  .guarantee .seal{flex-shrink:0;width:56px;height:56px;}
+  .guarantee h4{font-family:var(--sans);font-weight:700;font-size:17px;color:#14633F;margin-bottom:4px;}
+  .guarantee p{font-size:14.5px;color:#2C6B4C;margin:0;}
+
+  /* ── CREDIBILITY / AUTHORITY ── */
+  .cred{background:var(--plum);color:#fff;}
+  .cred .label{color:var(--gold-soft);}.cred .label .mark{background:var(--gold-soft);}
+  .cred h2{color:#fff;margin:16px 0 18px;max-width:18ch;}
+  .cred p{color:rgba(255,255,255,.84);max-width:60ch;}
+  .cred .who-by{display:flex;gap:22px;align-items:center;margin-top:30px;
+    padding:24px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;max-width:var(--measure);}
+  .cred .avatar{flex-shrink:0;width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--rose-deep));
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:26px;color:#fff;}
+  .cred .who-by b{display:block;color:#fff;font-family:var(--sans);font-size:16px;}
+  .cred .who-by small{color:rgba(255,255,255,.62);font-size:13.5px;}
+  .cred .basis{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;}
+  .cred .basis span{font-size:12.5px;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2);
+    border-radius:30px;padding:7px 14px;}
+
+  /* ── TESTIMONIALS ── */
+  .tnote{background:#FFFBF3;border:1px solid var(--gold-soft);border-radius:12px;padding:16px 20px;
+    margin-top:28px;font-size:13.5px;color:var(--soft-ink);max-width:var(--measure);}
+  .tgrid{margin-top:8px;display:grid;gap:0;border-top:1px solid var(--hair);}
+  .tcard{padding:32px 0;border-bottom:1px solid var(--hair);}
+  .tcard .stars{color:var(--gold);letter-spacing:4px;font-size:14px;margin-bottom:16px;}
+  .tcard p{font-family:var(--fraunces);font-style:italic;font-weight:400;font-size:20px;line-height:1.5;color:var(--plum-2);margin:0 0 16px;max-width:58ch;}
+  .tcard .who-said{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--rose-deep);text-transform:uppercase;}
+
+  /* ── MID-PAGE OFFER REPRISE ── */
+  .reprise{text-align:center;background:var(--rose-mist);border-top:1px solid var(--rose-tint);border-bottom:1px solid var(--rose-tint);}
+  .reprise h3{font-size:clamp(24px,3.4vw,32px);margin-bottom:10px;}
+  .reprise .anchor{display:block;margin-bottom:20px;}
+  .reprise .cta{margin-top:4px;}
+
+  /* ── FAQ ── */
+  .faq{margin-top:36px;border-top:1px solid var(--hair);max-width:var(--measure);}
+  .faq-item{border-bottom:1px solid var(--hair);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:var(--sans);
+    font-size:18px;font-weight:600;color:var(--plum);padding:24px 0;display:flex;justify-content:space-between;gap:18px;align-items:center;}
+  .faq-q .pm{flex-shrink:0;width:26px;height:26px;color:var(--rose-deep);transition:transform .3s var(--ease);}
+  .faq-q .pm svg{width:26px;height:26px;}.faq-item.open .pm{transform:rotate(45deg);}
+  .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease);}
+  .faq-a-inner{overflow:hidden;}.faq-item.open .faq-a{grid-template-rows:1fr;}
+  .faq-a p{font-size:16px;color:var(--soft-ink);padding-bottom:24px;margin:0;max-width:60ch;}
+  .faq-a em{color:var(--plum-2);font-style:italic;}
+
+  /* ── FINAL ── */
+  .final{position:relative;color:#fff;text-align:center;padding:96px 28px;
+    background:radial-gradient(110% 90% at 50% -10%,rgba(193,57,92,.4),transparent 60%),var(--plum);}
+  .final h2{color:#fff;max-width:18ch;margin:0 auto 22px;}.final h2 em.fr{color:#FFD9A6;}
+  .final p{color:rgba(255,255,255,.86);max-width:52ch;margin:0 auto 32px;}
+  .final .fineprint{margin-top:22px;font-size:13px;color:rgba(255,255,255,.7);}
+
+  /* ── STICKY ── */
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;transform:translateY(120%);transition:transform .4s var(--ease);
+    background:rgba(44,15,27,.94);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.12);padding:13px 20px;}
+  .sticky.show{transform:none;}
+  .sticky-inner{max-width:var(--wide);margin:0 auto;display:flex;align-items:center;gap:18px;justify-content:space-between;}
+  .sticky .lbl{color:#fff;font-size:14.5px;font-weight:600;line-height:1.25;}
+  .sticky .lbl small{display:block;color:rgba(255,255,255,.6);font-weight:400;font-size:12px;}
+  .sticky .lbl s{color:rgba(255,255,255,.45);}
+  .sticky .cta{padding:12px 24px;font-size:14.5px;white-space:nowrap;}
+  @media(max-width:520px){.sticky .lbl small{display:none;}}
+
+  /* ── FLOATING SUPPORT ── */
+  .support{position:fixed;right:18px;bottom:84px;z-index:25;width:54px;height:54px;border-radius:50%;
+    background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(20,99,63,.6);transition:transform .16s var(--ease);}
+  .support:hover{transform:scale(1.07);}.support svg{width:28px;height:28px;}
+
+  footer{background:var(--plum);color:rgba(255,255,255,.6);padding:56px 28px;font-size:12.5px;line-height:1.8;}
+  footer .disc{max-width:660px;margin:0 auto;}footer strong{color:rgba(255,255,255,.82);font-weight:600;}
+  footer a{color:var(--rose-tint);text-decoration:none;}footer a:hover{text-decoration:underline;}
+  .brandline{font-family:var(--serif);font-size:24px;color:#fff;margin-bottom:20px;}
+  .legal-links{margin-top:20px;}.legal-links a{margin-right:16px;}
+
+  /* ── tablet ── */
+  @media(max-width:900px){
+    section{padding:68px 0;}.pad-tight{padding-top:44px;}
+    .storywrap,.offerwrap,.final,.app-showcase{padding-top:76px;padding-bottom:76px;}
+  }
+  /* ── phone ── */
+  @media(max-width:640px){
+    section,.storywrap,.offerwrap,.final{padding-top:56px;padding-bottom:56px;}
+    .pad-tight{padding-top:34px;}
+    .app-showcase{padding:60px 16px;}
+    .hero{padding:48px 22px 64px;}
+    .inner{padding:0 20px;}
+    h1{line-height:1.08;} h2{line-height:1.14;}
+    .lead{font-size:17.5px;} .deck{font-size:17px;}
+    .cred .who-by{flex-direction:column;text-align:center;}
+    .feature{padding:26px 22px;}
+    .price-box{padding:36px 22px;} .amt{font-size:66px;} .amt small{font-size:24px;}
+    .urgency{padding:18px 18px;gap:12px;} .urgency .ut{max-width:none;}
+    .urgency .seg{min-width:44px;padding:7px 6px;} .urgency .seg b{font-size:20px;}
+    .step{gap:18px;} .step .n{font-size:32px;width:42px;}
+    .cell{padding:11px 5px;} .cell svg{width:16px;height:16px;}
+    .crow.head .cell{font-size:11px;}
+    .guarantee{flex-direction:column;text-align:center;gap:14px;padding:24px 22px;}
+    .pbadge{width:48px;height:30px;}
+  }
+  /* ── small phone ── */
+  @media(max-width:380px){
+    .inner{padding:0 16px;}
+    .hero-sub{gap:14px;font-size:12.5px;}
+    .amt{font-size:58px;}
+    .crow{grid-template-columns:1.35fr 1fr 1fr 1fr;}
+    .cell{padding:9px 3px;font-size:10.5px;} .cell.feat{font-size:11px;}
+  }
+
+  /* ===== STRATEGIC SECTIONS (mechanism, contrast, benefits, compare, urgency, community) ===== */
+  .cards.three{grid-template-columns:1fr;}
+  @media(min-width:760px){.cards.three{grid-template-columns:repeat(3,1fr);}}
+  .pillnum{font-family:var(--serif);font-size:30px;color:var(--rose);line-height:1;margin-bottom:10px;display:block;}
+
+  /* before / after */
+  .contrast{margin-top:36px;display:grid;gap:18px;}
+  @media(min-width:760px){.contrast{grid-template-columns:1fr 1fr;}}
+  .contrast .col{border:1px solid var(--hair);border-radius:18px;padding:28px 26px;background:var(--surface);}
+  .contrast .col.before{background:var(--paper-2);}
+  .contrast .col .ch{font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .contrast .col.before .ch{color:var(--soft-ink);}
+  .contrast .col.after .ch{color:var(--rose-deep);}
+  .contrast .col ul{list-style:none;}
+  .contrast .col li{display:flex;gap:12px;align-items:flex-start;padding:11px 0;font-size:15.5px;border-bottom:1px solid var(--hair);}
+  .contrast .col li:last-child{border-bottom:none;}
+  .contrast .col li .mk{flex-shrink:0;width:20px;height:20px;margin-top:1px;}
+  .contrast .before li{color:var(--soft-ink);}.contrast .before .mk{color:var(--soft-ink);}
+  .contrast .after li{color:var(--plum-2);}.contrast .after .mk{color:var(--green);}
+
+  /* benefits */
+  .benefits{margin-top:36px;display:grid;gap:22px;}
+  @media(min-width:640px){.benefits{grid-template-columns:1fr 1fr;}}
+  @media(min-width:920px){.benefits{grid-template-columns:1fr 1fr 1fr;}}
+  .benefit{display:flex;gap:14px;align-items:flex-start;}
+  .benefit .bic{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:var(--rose-mist);display:flex;align-items:center;justify-content:center;color:var(--rose-deep);}
+  .benefit .bic svg{width:22px;height:22px;}
+  .benefit b{display:block;font-family:var(--sans);font-weight:600;font-size:16px;color:var(--plum);margin-bottom:3px;}
+  .benefit p{font-size:14px;color:var(--soft-ink);margin:0;line-height:1.55;}
+
+  /* comparison table */
+  .compare{margin-top:36px;border:1px solid var(--hair);border-radius:18px;overflow:hidden;background:var(--surface);}
+  .crow{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;align-items:stretch;}
+  .crow+.crow{border-top:1px solid var(--hair);}
+  .crow.head{background:var(--paper-2);}
+  .cell{padding:15px 12px;font-size:13.5px;color:var(--plum-2);text-align:center;display:flex;align-items:center;justify-content:center;}
+  .cell.feat{justify-content:flex-start;text-align:left;font-weight:600;color:var(--plum);}
+  .crow.head .cell{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.03em;color:var(--soft-ink);}
+  .crow.head .cell.us{color:var(--rose-deep);}
+  .cell.us{background:var(--rose-mist);}
+  .cell .yes{color:var(--green);}.cell .no{color:#B0563A;opacity:.65;}
+  .cell svg{width:19px;height:19px;}
+  @media(max-width:640px){.cell{padding:11px 5px;font-size:11px;}.cell.feat{font-size:11.5px;}.crow{grid-template-columns:1.5fr 1fr 1fr 1fr;}}
+
+  /* honest urgency */
+  .urgency{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:center;text-align:center;background:var(--plum);color:#fff;border-radius:18px;padding:22px 28px;max-width:560px;margin:0 auto 26px;}
+  .urgency .ut{font-size:14px;color:rgba(255,255,255,.85);max-width:24ch;}.urgency .ut b{color:#FFD9A6;}
+  .urgency .clock{display:flex;gap:9px;}
+  .urgency .seg{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:8px 9px;min-width:52px;}
+  .urgency .seg b{font-family:var(--serif);font-size:24px;line-height:1;color:#fff;}
+  .urgency .seg small{display:block;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:5px;}
+
+  /* community band */
+  .commband{margin-top:30px;background:var(--rose-mist);border:1px solid var(--rose-tint);border-radius:18px;padding:30px 28px;text-align:center;}
+  .commband .av-row{display:flex;justify-content:center;margin-bottom:14px;}
+  .commband .av-row span{width:38px;height:38px;border-radius:50%;border:2px solid var(--rose-mist);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;margin-left:-10px;font-family:var(--sans);}
+  .commband .av-row span:first-child{margin-left:0;}
+  .commband p{color:var(--plum-2);max-width:54ch;margin:0 auto;}
+
+  /* ===== PASS 2-4 · CRO microcopy + color + creative-director signatures ===== */
+  .price-box .cta-sub{font-size:12.5px;color:var(--soft-ink);margin-top:12px;line-height:1.55;}
+  .price-box .cta-sub b{color:var(--green);font-weight:600;}
+  .punch{margin-top:24px;font-family:var(--fraunces);font-style:italic;font-size:clamp(19px,2.7vw,24px);line-height:1.35;color:var(--plum);max-width:46ch;}
+  .sig{display:block;width:44px;height:44px;margin:0 auto 18px;color:var(--gold-soft);opacity:.92;}
+  @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .hero .as-bare .device{animation:floatY 6.5s ease-in-out infinite;}
+</style>
+<style>
+/* ===== Real LoveApp phone showcase — scoped under .app-showcase ===== */
+.app-showcase{
+  --red:#E2384F; --red-2:#EC5170; --red-deep:#C42846; --card-a:#C1394A; --card-b:#8E2335;
+  --s-ink:#262626; --s-soft:#8A8A8A; --s-line:#ECECEC; --s-label:#D72D4A; --s-gold:#F4C84B;
+  --s-sans:'Poppins',-apple-system,system-ui,sans-serif; --s-script:'Pacifico',cursive;
+  font-family:var(--s-sans);padding:96px 24px;text-align:center;overflow:hidden;
+  background:radial-gradient(70% 60% at 50% 0%,#FCEEF1,transparent 60%),var(--paper-2);
+}
+.app-showcase *{box-sizing:border-box;}
+.app-showcase .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--red-deep);}
+.app-showcase .eyebrow .mk{width:22px;height:1px;background:var(--s-gold);}
+.app-showcase h2{font-family:var(--s-sans);font-weight:800;color:#2C0F1B;font-size:clamp(28px,4.4vw,42px);line-height:1.12;letter-spacing:-.02em;margin:14px 0 12px;}
+.app-showcase .deck{color:var(--s-soft);max-width:52ch;margin:0 auto 54px;font-size:17px;}
+.app-showcase .phones{display:flex;justify-content:center;align-items:flex-end;gap:30px;flex-wrap:wrap;}
+.app-showcase .pw{display:flex;flex-direction:column;align-items:center;gap:18px;}
+.app-showcase .cap{font-size:13.5px;color:var(--s-soft);max-width:21ch;}
+.app-showcase .cap b{color:#2C0F1B;font-weight:600;}
+.app-showcase .device{position:relative;width:min(300px,86vw);aspect-ratio:300/620;height:auto;border-radius:46px;padding:11px;background:linear-gradient(160deg,#2a2a2c,#1a1a1c 50%,#0e0e10);box-shadow:0 0 0 2px #000 inset,0 30px 60px -18px rgba(44,15,27,.5),0 10px 24px -10px rgba(44,15,27,.4);}
+.app-showcase .device.center{transform:scale(1.06);z-index:2;}
+.app-showcase .screen{position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;background:#fff;display:flex;flex-direction:column;text-align:left;}
+.app-showcase .island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:92px;height:25px;background:#000;border-radius:999px;z-index:30;}
+.app-showcase .topbar{background:var(--red);color:#fff;padding:30px 16px 12px;display:flex;align-items:center;gap:9px;}
+.app-showcase .topbar .lg{width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.app-showcase .topbar .lg svg{width:15px;height:15px;color:#fff;}
+.app-showcase .topbar .wm{font-family:var(--s-script);font-size:16px;line-height:1;color:#fff;}
+.app-showcase .topbar .we{font-size:9.5px;opacity:.85;line-height:1;margin-top:2px;color:#fff;}
+.app-showcase .topbar .ic{margin-left:auto;display:flex;gap:12px;}
+.app-showcase .topbar .ic svg{width:17px;height:17px;color:#fff;}
+.app-showcase .body{flex:1;overflow:hidden;background:#fff;}
+.app-showcase .apphero{position:relative;height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;overflow:hidden;background:radial-gradient(50% 60% at 25% 30%,rgba(255,160,120,.65),transparent 60%),radial-gradient(60% 70% at 90% 80%,rgba(236,84,118,.6),transparent 60%),linear-gradient(135deg,#F0683C,#EC4E73 55%,#E23B57);}
+.app-showcase .apphero .bok{position:absolute;border-radius:50%;background:rgba(255,255,255,.18);}
+.app-showcase .apphero .bok:nth-child(1){width:60px;height:60px;top:18px;right:40px;}
+.app-showcase .apphero .bok:nth-child(2){width:30px;height:30px;top:70px;left:30px;}
+.app-showcase .apphero .bok:nth-child(3){width:42px;height:42px;bottom:30px;right:70px;background:rgba(255,255,255,.12);}
+.app-showcase .apphero .heart{position:relative;width:74px;height:74px;color:#fff;filter:drop-shadow(0 6px 10px rgba(0,0,0,.2));}
+.app-showcase .apphero .name{position:relative;font-weight:800;font-size:30px;color:#fff;letter-spacing:.5px;text-shadow:0 2px 8px rgba(0,0,0,.18);}
+.app-showcase .apphero .new{position:relative;background:rgba(255,255,255,.92);color:var(--red-deep);font-weight:800;font-size:9.5px;letter-spacing:.08em;padding:6px 14px;border-radius:30px;}
+.app-showcase .seedcard{margin:14px 15px 0;background:linear-gradient(135deg,var(--card-a),var(--card-b));border-radius:16px;padding:14px;color:#fff;display:flex;align-items:center;gap:12px;}
+.app-showcase .seedcard .si{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.app-showcase .seedcard .si svg{width:18px;height:18px;color:#fff;}
+.app-showcase .seedcard h4{font-family:var(--s-sans);font-size:12.5px;font-weight:700;margin-bottom:3px;color:#fff;}
+.app-showcase .seedcard p{font-size:10px;opacity:.9;line-height:1.4;color:#fff;}
+.app-showcase .seedcard .go{margin-left:auto;font-size:18px;opacity:.9;color:#fff;}
+.app-showcase .journey{font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--s-soft);margin:16px 15px 9px;}
+.app-showcase .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 15px;}
+.app-showcase .tile{position:relative;aspect-ratio:1;border-radius:11px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;}
+.app-showcase .tile.dark{background:linear-gradient(160deg,#3a2418,#1c0f0a);}
+.app-showcase .tile.dark b{color:var(--s-gold);font-size:9px;font-weight:800;line-height:1.1;text-transform:uppercase;padding:4px;}
+.app-showcase .tile.white{background:#fff;border:1px solid var(--s-line);}
+.app-showcase .tile.white .lp{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.app-showcase .tile.white svg{width:18px;height:18px;color:var(--red);}
+.app-showcase .tile.white small{font-family:var(--s-script);font-size:9px;color:var(--red);}
+.app-showcase .tile.redt{background:linear-gradient(160deg,var(--red-2),var(--red-deep));}
+.app-showcase .tile.redt .lp{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;}
+.app-showcase .tile.redt svg{width:18px;height:18px;color:#fff;}
+.app-showcase .tile.redt small{font-family:var(--s-script);font-size:9px;color:#fff;}
+.app-showcase .tile.bonus{background:linear-gradient(160deg,#5a1822,#2a0d12);}
+.app-showcase .tile.bonus .bt{color:#fff;font-weight:700;font-size:8.5px;line-height:1.15;padding:6px;text-align:center;}
+.app-showcase .tile .rib{position:absolute;top:5px;left:5px;background:var(--s-gold);color:#3a2400;font-size:6px;font-weight:800;letter-spacing:.04em;padding:2px 5px;border-radius:4px;}
+.app-showcase .nav{display:flex;justify-content:space-around;align-items:center;padding:9px 8px 18px;background:var(--red);}
+.app-showcase .nav a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:8.5px;color:rgba(255,255,255,.72);font-weight:600;text-decoration:none;}
+.app-showcase .nav a svg{width:19px;height:19px;}
+.app-showcase .nav a.on{color:#fff;}
+.app-showcase .back{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--s-ink);border:1px solid var(--s-line);border-radius:30px;padding:6px 12px;margin:14px 15px 0;}
+.app-showcase .back svg{width:13px;height:13px;color:var(--red);}
+.app-showcase .h-title{font-family:var(--s-sans);font-size:21px;font-weight:800;color:#1a1a1a;margin:12px 15px 4px;}
+.app-showcase .h-sub{font-size:11px;color:var(--s-soft);margin:0 15px 12px;line-height:1.45;}
+.app-showcase .tabs{display:flex;gap:8px;padding:0 15px;}
+.app-showcase .tab{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:8px 14px;border-radius:30px;}
+.app-showcase .tab.on{background:var(--red);color:#fff;}
+.app-showcase .tab.off{background:#fff;border:1px solid var(--s-line);color:var(--s-soft);}
+.app-showcase .tab svg{width:13px;height:13px;}
+.app-showcase .seedmeta{display:flex;align-items:center;justify-content:space-between;padding:14px 15px 9px;}
+.app-showcase .seedmeta small{font-size:10px;color:var(--s-soft);}
+.app-showcase .regen{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;color:var(--s-ink);border:1px solid var(--s-line);border-radius:30px;padding:6px 11px;}
+.app-showcase .regen svg{width:12px;height:12px;color:var(--red);}
+.app-showcase .detailcard{margin:0 15px;background:#fff;border:1px solid var(--s-line);border-radius:16px;padding:15px;box-shadow:0 10px 24px -20px rgba(0,0,0,.4);}
+.app-showcase .detailcard .ch{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.app-showcase .detailcard .ch b{font-size:13px;font-weight:700;color:#1a1a1a;}
+.app-showcase .detailcard .tg{font-size:8px;font-weight:800;letter-spacing:.04em;color:var(--s-label);background:#FCE4EA;padding:3px 8px;border-radius:20px;flex-shrink:0;}
+.app-showcase .detailcard .quote{font-size:16px;font-weight:700;color:#1a1a1a;margin:8px 0 12px;line-height:1.25;}
+.app-showcase .detailcard .lbl{font-size:9px;font-weight:800;letter-spacing:.06em;color:var(--s-label);margin-top:10px;}
+.app-showcase .detailcard .txt{font-size:10px;color:#555;line-height:1.5;margin-top:3px;}
+.app-showcase .detailcard .acts{display:flex;gap:8px;margin-top:13px;}
+.app-showcase .detailcard .acts a{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;padding:8px 12px;border-radius:9px;text-decoration:none;}
+.app-showcase .detailcard .acts .copy{background:var(--red);color:#fff;}
+.app-showcase .detailcard .acts .learn{border:1px solid var(--s-line);color:var(--s-ink);}
+.app-showcase .detailcard .acts svg{width:13px;height:13px;}
+.app-showcase .detailcard .tone{display:flex;align-items:center;gap:8px;margin-top:13px;padding-top:11px;border-top:1px dashed var(--s-line);}
+.app-showcase .detailcard .tone .tl{font-size:9px;font-weight:800;color:var(--s-label);letter-spacing:.04em;}
+.app-showcase .detailcard .tone span{font-size:10px;font-weight:600;color:var(--s-ink);border:1px solid var(--s-line);border-radius:20px;padding:5px 12px;}
+.app-showcase .detailcard .sent{font-size:10px;color:var(--s-label);font-weight:600;margin-top:11px;padding-top:10px;border-top:1px dashed var(--s-line);display:flex;align-items:center;gap:6px;}
+.app-showcase .detailcard .sent svg{width:13px;height:13px;}
+.app-showcase .post{margin:0 15px 11px;background:#fff;border:1px solid var(--s-line);border-radius:14px;padding:13px;}
+.app-showcase .post .ph{display:flex;align-items:center;gap:9px;margin-bottom:8px;}
+.app-showcase .post .av{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;}
+.app-showcase .post .nm{font-size:11.5px;font-weight:700;color:#1a1a1a;}
+.app-showcase .post .dt{font-size:9px;color:var(--s-soft);}
+.app-showcase .post .bm{margin-left:auto;color:var(--s-soft);}
+.app-showcase .post .bm svg{width:14px;height:14px;}
+.app-showcase .post .pt{font-size:12.5px;font-weight:700;color:#1a1a1a;margin-bottom:4px;}
+.app-showcase .post .pb{font-size:10.5px;color:#555;line-height:1.5;}
+.app-showcase .post .pf{display:flex;align-items:center;gap:14px;margin-top:10px;padding-top:9px;border-top:1px solid var(--s-line);font-size:10px;color:var(--s-soft);font-weight:600;}
+.app-showcase .post .pf .it{display:flex;align-items:center;gap:4px;}
+.app-showcase .post .pf svg{width:13px;height:13px;}
+.app-showcase .post .pf .cm{margin-left:auto;color:var(--red);}
+.app-showcase .share{margin:14px 15px;display:flex;align-items:center;gap:8px;border:1px solid var(--s-line);border-radius:30px;padding:10px 14px;color:var(--s-soft);font-size:10.5px;}
+.app-showcase .share svg{width:13px;height:13px;color:var(--red);}
+.app-showcase .footnote{margin-top:46px;font-size:13px;color:var(--s-soft);max-width:62ch;margin-inline:auto;}
+@media(max-width:980px){.app-showcase .device.side{display:none;}.app-showcase .device.center{transform:none;}}
+/* bare scope so a phone can live outside the showcase section (e.g. the hero) */
+.app-showcase.as-bare{padding:0;background:none;overflow:visible;text-align:center;}
+.app-showcase.as-bare .device{margin:0 auto;}
+.hero .app-showcase.as-bare .device{box-shadow:0 0 0 2px #000 inset,0 40px 80px -24px rgba(0,0,0,.7),0 0 90px -30px rgba(193,57,92,.8);}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ───────── HERO + VSL ───────── -->
+  <header class="hero" data-od-id="hero">
+    <div class="hero-inner">
+      <span class="label reveal in"><span class="mark"></span>LoveApp</span>
+      <h1 class="reveal in s2">When he starts pulling away, <em class="fr">the words stop coming easily.</em></h1>
+      <p class="deck reveal in s3">LoveApp helps you find the right thing to say — personalized to your situation — so you can reopen the conversation, reconnect, and feel like yourself again.</p>
+
+      <!-- App mockup (Home screen) in place of the VSL -->
+      <div class="app-showcase as-bare reveal in s3" data-od-id="hero-phone" style="margin:8px auto 30px;max-width:300px;">
+        <div class="device"><div class="screen">
+          <div class="island"></div>
+          <div class="topbar"><span class="lg"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span><div><div class="wm">LoveApp</div><div class="we">Welcome, mezdsv</div></div><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M19 12a7 7 0 01-.1 1l2 1.5-2 3.4-2.3-1a7 7 0 01-1.7 1l-.3 2.5h-4l-.3-2.5a7 7 0 01-1.7-1l-2.3 1-2-3.4L5 13a7 7 0 010-2L3 9.5l2-3.4 2.3 1a7 7 0 011.7-1L9.3 3.6h4l.3 2.5a7 7 0 011.7 1l2.3-1 2 3.4L19 11a7 7 0 010 1z"/></svg></span></div>
+          <div class="body">
+            <div class="apphero"><span class="bok"></span><span class="bok"></span><span class="bok"></span>
+              <svg class="heart" viewBox="0 0 64 64" fill="currentColor"><path d="M32 56S6 40 6 22C6 13 13 8 20 8c5 0 9 3 12 8 3-5 7-8 12-8 7 0 14 5 14 14 0 18-26 34-26 34z"/><path d="M40 6l16-2-6 6 8 2-12 4z"/><path d="M14 50l34-34" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+              <span class="name">LoveApp</span><span class="new">NEW CONTENT AVAILABLE</span></div>
+            <div class="seedcard"><span class="si"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4m10-2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg></span><div><h4>Your Dopamine Seeds are ready</h4><p>Phrases personalized to your case — copy, learn the technique, and send with confidence.</p></div><span class="go">→</span></div>
+            <div class="journey">YOUR JOURNEY</div>
+            <div class="grid">
+              <div class="tile dark"><b>Dopamine Seeds</b></div>
+              <div class="tile white"><div class="lp"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg><small>LoveApp</small></div></div>
+              <div class="tile redt"><div class="lp"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg><small>LoveApp</small></div></div>
+              <div class="tile bonus"><span class="rib">EXCLUSIVE BONUS</span><span class="bt">The Secret of Mistresses</span></div>
+              <div class="tile bonus"><span class="rib">EXCLUSIVE BONUS</span><span class="bt">Woman Detective Method</span></div>
+              <div class="tile bonus"><span class="rib">EXCLUSIVE BONUS</span><span class="bt">Winning your Ex Back</span></div>
+            </div>
+          </div>
+          <div class="nav"><a class="on"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Home</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4m10-2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>Coach</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8m-8 8h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Community</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20a8 8 0 0116 0"/></svg>Profile</a></div>
+        </div></div>
+      </div>
+
+      <div class="hero-actions reveal in s4">
+        <a href="#what" class="cta cta-primary cta-lg">See How It Works <span class="arr">→</span></a>
+      </div>
+      <div class="hero-sub reveal in s5">
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>One-time access</span>
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>60-day guarantee</span>
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Any device</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ───────── TRUST BAR ───────── -->
+  <div class="trustbar" data-od-id="trustbar"><div class="inner">
+    <div class="trust"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><b>60-Day Guarantee</b><span>Full refund, no hassle</span></div>
+    <div class="trust"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span><b>Instant Access</b><span>Use it minutes from now</span></div>
+    <div class="trust"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></span><b>Secure Checkout</b><span>Your data stays private</span></div>
+    <div class="trust"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a4 4 0 014-4h.5M7 8h10M5 4h14a1 1 0 011 1v3a5 5 0 01-5 5H9a5 5 0 01-5-5V5a1 1 0 011-1z"/></svg></span><b>Yours to Keep</b><span>Lifetime access</span></div>
+  </div></div>
+
+  <!-- ───────── PAIN ───────── -->
+  <section data-od-id="pain"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>Sound familiar?</div>
+      <h2 class="reveal" style="margin:16px 0 18px;">You're not imagining it. <em class="fr">Something shifted.</em></h2>
+      <p class="lead reveal">The texts got shorter. The warmth cooled. He says he's "just busy," and you're left re-reading messages, wondering what you did — or whether it's all in your head.</p>
+      <p class="muted reveal" style="margin-top:14px;">It's an exhausting place to be. And the hardest part is that the more you try to fix it, the more the words seem to come out wrong.</p>
+    </div>
+    <div class="painlist reveal">
+      <div class="row"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12a8 8 0 01-11.5 7.2L3 21l1.8-6.5A8 8 0 1121 12z"/></svg></span>He replies slower, shorter, or not at all — and you feel it.</div>
+      <div class="row"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.4-9.4a2 2 0 112.8 2.8L12 16l-4 1 1-4 9.6-9.6z"/></svg></span>Every message you draft either feels needy or fake.</div>
+      <div class="row"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span>You overthink, then send nothing — or send the wrong thing.</div>
+      <div class="row"><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.3a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.2l-2.2 1.1a11 11 0 005.5 5.5l1.1-2.2a1 1 0 011.2-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2A16 16 0 013 5z"/></svg></span>You miss the easy, warm conversations you used to have.</div>
+    </div>
+  </div></section>
+
+  <!-- ───────── STORY ───────── -->
+  <div class="storywrap" data-od-id="story"><div class="inner">
+    <div class="label reveal"><span class="mark"></span>A quick story</div>
+    <h2 class="reveal">Jessica almost gave up.</h2>
+    <blockquote class="pullquote reveal s2">What changed things wasn't a trick — it was <b>a better starting point.</b></blockquote>
+    <div class="story-body reveal s3">
+      <p>After a year together, Matthew started to drift. The long conversations turned into one-word answers. Jessica did what most of us do — she pushed harder, asked more questions, and felt him pull further away.</p>
+      <p>What finally changed things wasn't a trick. It was <strong>changing how she opened the conversation</strong> — leading with a shared memory instead of an accusation, and giving him room to respond instead of demanding it.</p>
+      <p>It didn't fix everything overnight, and it wasn't magic. But it gave them a real conversation again — the first one in months. That's all most relationships need to find their way back.</p>
+    </div>
+    <p class="storynote reveal s3">Jessica's experience is one woman's story. Every relationship is different, and no message can decide what another person feels or does.</p>
+  </div></div>
+
+  <!-- ───────── MECHANISM (why it works) ───────── -->
+  <section data-od-id="mechanism"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>Why it works</div>
+      <h2 class="reveal" style="margin:16px 0 18px;">Most messages fail for the <em class="fr">same three reasons.</em></h2>
+      <p class="lead reveal">When you're anxious, the words come out as pressure — and pressure makes someone pull back. LoveApp is built on the opposite move: three communication principles that make a message easy to answer instead of easy to ignore.</p>
+    </div>
+    <div class="cards three">
+      <div class="card reveal"><span class="pillnum">01</span><h4>Lead with a shared positive</h4><p>Opening on a good memory you both hold lowers his guard — instead of a "we need to talk" that raises it.</p></div>
+      <div class="card reveal s2"><span class="pillnum">02</span><h4>Invite, don't demand</h4><p>A message phrased as an opening — not an interrogation — gives him room to respond, so he actually does.</p></div>
+      <div class="card reveal s3"><span class="pillnum">03</span><h4>Sound like you, calm</h4><p>It keeps your real voice, just on your steadiest day — so it lands as warm and honest, never needy or scripted.</p></div>
+    </div>
+  </div></section>
+
+  <!-- ───────── WHAT IT IS ───────── -->
+  <section id="what" data-od-id="what"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>What LoveApp actually is</div>
+      <h2 class="reveal" style="margin:16px 0 20px;">A personal guide for <em class="fr">the words you can't find.</em></h2>
+      <p class="lead reveal">LoveApp is a simple web app. You tell it about your situation — where things stand, the kind of relationship, what you're hoping to say — and it generates <strong>personalized message suggestions</strong> written for your specific moment.</p>
+      <p class="muted reveal" style="margin-top:14px;">Not generic copy-paste lines. Not scripts that sound like everyone else. Suggestions you can make your own, so the next thing you send actually sounds like you on your best, calmest day.</p>
+    </div>
+    <div class="feature reveal">
+      <span class="badge"><span class="dot"></span>Grounded in communication principles</span>
+      <p>LoveApp's suggestions are informed by well-established communication ideas — active listening, leading with shared positives, and saying things in a way that invites a response instead of a defense. It's not therapy and makes no clinical claims; it simply applies these principles to <strong>your</strong> situation, so the wording fits your reality instead of a stranger's recycled lines.</p>
+    </div>
+  </div></section>
+
+  <!-- ───────── BEFORE / AFTER ───────── -->
+  <section class="pad-tight" data-od-id="contrast"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>The difference</div>
+      <h2 class="reveal" style="margin:16px 0 4px;">Texting now <em class="fr">vs. with LoveApp</em></h2>
+    </div>
+    <div class="contrast">
+      <div class="col before reveal">
+        <div class="ch"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg>Right now, on your own</div>
+        <ul>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span>Rewriting one text for an hour, then deleting it.</li>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span>Everything reads needy, cold, or fake.</li>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span>You send the wrong thing — or nothing at all.</li>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span>The silence stretches and the doubt grows.</li>
+        </ul>
+      </div>
+      <div class="col after reveal s2">
+        <div class="ch"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>With LoveApp in hand</div>
+        <ul>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>A calm opener ready in under two minutes.</li>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>Wording that sounds like you on your best day.</li>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>You hit send without second-guessing.</li>
+          <li><span class="mk"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>The conversation reopens — gently, on a good note.</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ───────── STEPS ───────── -->
+  <section class="pad-tight" data-od-id="steps"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>Three simple steps</div>
+      <h2 class="reveal" style="margin:16px 0 4px;">From stuck to "send" <em class="fr">in minutes</em></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="n">1</div><div><h4>Tell it your situation</h4><p>Answer a few quick questions about the relationship and what you want to say.</p></div></div>
+      <div class="step reveal s2"><div class="n">2</div><div><h4>Get your personalized suggestions</h4><p>LoveApp generates message ideas tailored to your moment — ready to adapt in your own voice.</p></div></div>
+      <div class="step reveal s3"><div class="n">3</div><div><h4>Send with confidence</h4><p>Pick the one that feels right, make it yours, and reopen the conversation without second-guessing.</p></div></div>
+    </div>
+  </div></section>
+
+  <!-- ───────── LIBRARY ───────── -->
+  <section class="pad-tight" data-od-id="library"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>The collections</div>
+      <h2 class="reveal" style="margin:16px 0 14px;">Your message library, <em class="fr">organized by moment</em></h2>
+      <p class="muted reveal">LoveApp's generator is organized into situation-based collections — pick the moment you're in and get personalized suggestions for it:</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8m-8 8h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h4>Reopening after silence</h4><p>The gentle opener that breaks a long quiet — with zero trace of "why haven't you texted me."</p></div>
+      <div class="card reveal s2"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div><h4>Bringing back warmth</h4><p>Lead with a memory you both still smile about — so the warmth comes back on its own.</p></div>
+      <div class="card reveal"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h6m-6 8l-2-2H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-7l-4 4z"/></svg></div><h4>Saying how you feel</h4><p>Say the hard thing in a way that opens his arms instead of his defenses.</p></div>
+      <div class="card reveal s2"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.3 5.7L22 12l-6.7 2.3L13 21l-2.3-6.7L4 12l6.7-1.3z"/></svg></div><h4>Rekindling a long relationship</h4><p>Small, low-pressure sparks for a love that's grown comfortable — but a little quiet.</p></div>
+      <div class="card reveal"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.25a5.5 5.5 0 015.5 5.5c0 2-1.5 3.5-1.5 5.25H8c0-1.75-1.5-3.25-1.5-5.25a5.5 5.5 0 015.5-5.5zM9.5 20h5"/></svg></div><h4>Starting a deeper conversation</h4><p>How to start the honest talk you've been circling for weeks — finally.</p></div>
+      <div class="card reveal s2"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.09 6.26L20 9.27l-5 3.64L16.18 19 12 15.27 7.82 19 9 12.91l-5-3.64 5.91.01L12 3z"/></svg></div><h4>Your own confidence</h4><p>Two-line reminders that put your feet back under you before you ever hit send.</p></div>
+    </div>
+  </div></section>
+
+  <!-- ───────── REAL APP SHOWCASE (phones) ───────── -->
+  <section class="showcase app-showcase" data-od-id="app-showcase">
+    <div class="eyebrow reveal"><span class="mk"></span>Inside LoveApp</div>
+    <h2 class="reveal">This is the app you'll actually open</h2>
+    <p class="deck reveal">Your Dopamine Seeds, the technique behind each one, and a community of women on the same journey.</p>
+    <div class="phones">
+
+      <!-- HOME -->
+      <div class="pw reveal">
+        <div class="device side"><div class="screen">
+          <div class="island"></div>
+          <div class="topbar"><span class="lg"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span><div><div class="wm">LoveApp</div><div class="we">Welcome, mezdsv</div></div><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M19 12a7 7 0 01-.1 1l2 1.5-2 3.4-2.3-1a7 7 0 01-1.7 1l-.3 2.5h-4l-.3-2.5a7 7 0 01-1.7-1l-2.3 1-2-3.4L5 13a7 7 0 010-2L3 9.5l2-3.4 2.3 1a7 7 0 011.7-1L9.3 3.6h4l.3 2.5a7 7 0 011.7 1l2.3-1 2 3.4L19 11a7 7 0 010 1z"/></svg></span></div>
+          <div class="body">
+            <div class="apphero"><span class="bok"></span><span class="bok"></span><span class="bok"></span>
+              <svg class="heart" viewBox="0 0 64 64" fill="currentColor"><path d="M32 56S6 40 6 22C6 13 13 8 20 8c5 0 9 3 12 8 3-5 7-8 12-8 7 0 14 5 14 14 0 18-26 34-26 34z"/><path d="M40 6l16-2-6 6 8 2-12 4z"/><path d="M14 50l34-34" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>
+              <span class="name">LoveApp</span><span class="new">NEW CONTENT AVAILABLE</span></div>
+            <div class="seedcard"><span class="si"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4m10-2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg></span><div><h4>Your Dopamine Seeds are ready</h4><p>Phrases personalized to your case — copy, learn the technique, and send with confidence.</p></div><span class="go">→</span></div>
+            <div class="journey">YOUR JOURNEY</div>
+            <div class="grid">
+              <div class="tile dark"><b>Dopamine Seeds</b></div>
+              <div class="tile white"><div class="lp"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg><small>LoveApp</small></div></div>
+              <div class="tile redt"><div class="lp"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg><small>LoveApp</small></div></div>
+              <div class="tile bonus"><span class="rib">EXCLUSIVE BONUS</span><span class="bt">The Secret of Mistresses</span></div>
+              <div class="tile bonus"><span class="rib">EXCLUSIVE BONUS</span><span class="bt">Woman Detective Method</span></div>
+              <div class="tile bonus"><span class="rib">EXCLUSIVE BONUS</span><span class="bt">Winning your Ex Back</span></div>
+            </div>
+          </div>
+          <div class="nav"><a class="on"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Home</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4m10-2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>Coach</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8m-8 8h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Community</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20a8 8 0 0116 0"/></svg>Profile</a></div>
+        </div></div>
+        <p class="cap"><b>Home</b> — your journey, bonuses and seeds in one place.</p>
+      </div>
+
+      <!-- DOPAMINE SEEDS (detail) -->
+      <div class="pw reveal s2">
+        <div class="device center"><div class="screen">
+          <div class="island"></div>
+          <div class="topbar"><span class="lg"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span><div><div class="wm">LoveApp</div><div class="we">Welcome, mezdsv</div></div><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M19 12a7 7 0 01-.1 1l2 1.5-2 3.4-2.3-1a7 7 0 01-1.7 1l-.3 2.5h-4l-.3-2.5a7 7 0 01-1.7-1l-2.3 1-2-3.4L5 13a7 7 0 010-2L3 9.5l2-3.4 2.3 1a7 7 0 011.7-1L9.3 3.6h4l.3 2.5a7 7 0 011.7 1l2.3-1 2 3.4L19 11a7 7 0 010 1z"/></svg></span></div>
+          <div class="body">
+            <span class="back"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>Home</span>
+            <div class="h-title">The Dopamine Seeds</div>
+            <p class="h-sub">Your phrases, personalized to your case — and the technique behind each one.</p>
+            <div class="tabs"><span class="tab on"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3-7 3V5z"/></svg>Your Seeds</span><span class="tab off"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"/></svg>Masterclass</span></div>
+            <div class="seedmeta"><small>3 seeds personalized for your case</small><span class="regen"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M5 9a7 7 0 0111-3m3 9a7 7 0 01-11 3"/></svg>Regenerate</span></div>
+            <div class="detailcard">
+              <div class="ch"><b>Something Reminded Me of Us</b><span class="tg">SOFT</span></div>
+              <div class="quote">"Something reminded me of us today."</div>
+              <div class="lbl">WHEN TO USE</div>
+              <div class="txt">A low-pressure reopener — a quiet moment when he crosses your mind; reopening gently after a silence; a low-pressure check-in.</div>
+              <div class="lbl">WHY IT WORKS FOR YOU</div>
+              <div class="txt">This subtle message rekindles the warmth of your shared history, making him recall the moments you both cherished. It gently invites him to remember without pressure.</div>
+              <div class="acts"><a class="copy"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 8h10v10M8 8H6a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>Copy</a><a class="learn"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"/></svg>Learn the technique</a></div>
+              <div class="tone"><span class="tl">TONE</span><span>Softer</span><span>Bolder</span></div>
+              <div class="sent"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8m-8 8h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Did you send it? How'd it go?</div>
+            </div>
+          </div>
+          <div class="nav"><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Home</a><a class="on"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4m10-2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>Coach</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8m-8 8h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Community</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20a8 8 0 0116 0"/></svg>Profile</a></div>
+        </div></div>
+        <p class="cap"><b>The Dopamine Seeds</b> — the phrase, when to use it, why it works.</p>
+      </div>
+
+      <!-- COMMUNITY -->
+      <div class="pw reveal s3">
+        <div class="device side"><div class="screen">
+          <div class="island"></div>
+          <div class="topbar"><span class="lg"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></span><div><div class="wm">LoveApp</div><div class="we">Welcome, mezdsv</div></div><span class="ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" d="M19 12a7 7 0 01-.1 1l2 1.5-2 3.4-2.3-1a7 7 0 01-1.7 1l-.3 2.5h-4l-.3-2.5a7 7 0 01-1.7-1l-2.3 1-2-3.4L5 13a7 7 0 010-2L3 9.5l2-3.4 2.3 1a7 7 0 011.7-1L9.3 3.6h4l.3 2.5a7 7 0 011.7 1l2.3-1 2 3.4L19 11a7 7 0 010 1z"/></svg></span></div>
+          <div class="body">
+            <div class="h-title" style="margin-top:14px;">Community</div>
+            <p class="h-sub">Real talk from women on the same journey. Be kind, be honest.</p>
+            <div class="share"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.4-9.4a2 2 0 112.8 2.8L12 16l-4 1 1-4 9.6-9.6z"/></svg>Share something with the crew...</div>
+            <div class="post">
+              <div class="ph"><span class="av" style="background:#444;">K</span><div><div class="nm">Krista</div><div class="dt">Mar 09, 2026 · 09:14</div></div><span class="bm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3-7 3V5z"/></svg></span></div>
+              <div class="pt">New to the crew</div>
+              <div class="pb">Hey everyone — I'm new here and a little nervous. My husband and I have been together 10 years and we've been a bit cold lately. Anyone stayed because they got real results?</div>
+              <div class="pf"><span class="it"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.3c0-2.5-2.1-4.5-4.7-4.5-1.9 0-3.6 1.1-4.3 2.7-.7-1.6-2.4-2.7-4.3-2.7C5.1 3.8 3 5.8 3 8.3c0 7.2 9 12 9 12s9-4.8 9-12z"/></svg>24</span><span class="it"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>8</span><span class="cm">Comment</span></div>
+            </div>
+            <div class="post">
+              <div class="ph"><span class="av" style="background:#2563EB;">G</span><div><div class="nm">Gichele Nembhard</div><div class="dt">Jan 19, 2026 · 12:57</div></div><span class="bm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3-7 3V5z"/></svg></span></div>
+              <div class="pt">No contact phase, day 14</div>
+              <div class="pb">I'm a mess but I'm holding. He texted Saturday and I didn't respond like the technique said. My friend says I'm glowing again.</div>
+              <div class="pf"><span class="it" style="color:var(--red);"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3.2 1.2 4 2.5.8-1.3 2-2.5 4-2.5 3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg>47</span><span class="it"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>12</span><span class="cm">Comment</span></div>
+            </div>
+          </div>
+          <div class="nav"><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>Home</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4m10-2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg>Coach</a><a class="on"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8m-8 8h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Community</a><a><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20a8 8 0 0116 0"/></svg>Profile</a></div>
+        </div></div>
+        <p class="cap"><b>Community</b> — women on the same journey, cheering each other on.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───────── APP FEATURES (deeper) ───────── -->
+  <section class="pad-tight" data-od-id="features"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>The full toolkit</div>
+      <h2 class="reveal" style="margin:16px 0 14px;">More than phrases — <em class="fr">a whole toolkit</em></h2>
+      <p class="muted reveal">Every part of LoveApp is built to take you from "stuck" to "sent" with confidence.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4m10-2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"/></svg></div><h4>Dopamine Seeds</h4><p>Personalized phrases for your exact situation — each tagged Soft, Light or Bold so you pick the right energy.</p></div>
+      <div class="card reveal s2"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m-5-3.5v3a2 2 0 002 2h6a2 2 0 002-2v-3"/></svg></div><h4>The Masterclass</h4><p>The technique behind every message — so you learn <em>why</em> it works and get better on your own.</p></div>
+      <div class="card reveal"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div><h4>Tone control</h4><p>One tap makes any suggestion softer or bolder, until it sounds exactly like you.</p></div>
+      <div class="card reveal s2"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h8M8 8h8m-8 8h5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h4>The Coach</h4><p>Stuck on a reply? Describe the moment and get guidance tailored to what's actually happening.</p></div>
+      <div class="card reveal"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-1a4 4 0 10-4-4 4 4 0 004 4zm6.5-3a3 3 0 10-3-5"/></svg></div><h4>The Community</h4><p>Real women on the same journey — ask, vent, and cheer each other on. You're not doing this alone.</p></div>
+      <div class="card reveal s2"><div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12v9H4v-9M2 7h20v5H2zM12 22V7m0 0H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zm0 0h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div><h4>Bonus library</h4><p>Guides on understanding him, reconnecting after distance, and the habits that quietly cool a connection.</p></div>
+    </div>
+  </div></section>
+
+  <!-- ───────── MULTI-DEVICE ───────── -->
+  <section class="device" data-od-id="device"><div class="inner">
+    <div class="label reveal" style="justify-content:center;"><span class="mark"></span>Anywhere you are</div>
+    <h2 class="reveal" style="margin-top:16px;">Works on any device, <em class="fr">any time</em></h2>
+    <p class="muted reveal" style="max-width:46ch;margin:0 auto;">Nothing to download. LoveApp runs right in your browser — open it on the device that's already in your hand.</p>
+    <div class="row reveal s2">
+      <div class="dv"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>Phone</div>
+      <div class="dv"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Computer</div>
+      <div class="dv"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 19h2"/></svg>Tablet</div>
+    </div>
+  </div></section>
+
+  <!-- ───────── BENEFITS ───────── -->
+  <section class="pad-tight" data-od-id="benefits"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>What changes for you</div>
+      <h2 class="reveal" style="margin:16px 0 4px;">How it feels <em class="fr">to use it</em></h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit reveal"><span class="bic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><div><b>You stop second-guessing</b><p>No more rewriting the same text ten times before deleting it.</p></div></div>
+      <div class="benefit reveal s2"><span class="bic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></span><div><b>Calmer when the phone buzzes</b><p>Less panic, less spiral — you know you have a steady way to respond.</p></div></div>
+      <div class="benefit reveal s3"><span class="bic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h6m-6 8l-2-2H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-7l-4 4z"/></svg></span><div><b>It sounds like you</b><p>Warm, honest wording in your own voice — never copy-paste or robotic.</p></div></div>
+      <div class="benefit reveal"><span class="bic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 12h15"/></svg></span><div><b>You reopen the conversation</b><p>A gentle first step that invites a reply instead of pushing him away.</p></div></div>
+      <div class="benefit reveal s2"><span class="bic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.09 6.26L20 9.27l-5 3.64L16.18 19 12 15.27 7.82 19 9 12.91l-5-3.64 5.91.01L12 3z"/></svg></span><div><b>You feel in control again</b><p>Grounded and sure of your worth before you ever hit send.</p></div></div>
+      <div class="benefit reveal s3"><span class="bic"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.3c0-2.5-2.1-4.5-4.7-4.5-1.9 0-3.6 1.1-4.3 2.7-.7-1.6-2.4-2.7-4.3-2.7C5.1 3.8 3 5.8 3 8.3c0 7.2 9 12 9 12s9-4.8 9-12z"/></svg></span><div><b>Warmth has room to come back</b><p>Better openings give a real conversation the chance to happen again.</p></div></div>
+    </div>
+    <p class="muted tiny reveal" style="margin-top:24px;max-width:62ch;">These describe how the tool is designed to help <em>you</em> communicate. Outcomes vary from person to person — no message can decide how another person feels or responds.</p>
+  </div></section>
+
+  <!-- ───────── WHO ───────── -->
+  <section class="pad-tight" data-od-id="who"><div class="inner">
+    <div class="label reveal"><span class="mark"></span>Who it's for</div>
+    <h2 class="reveal" style="margin:16px 0 4px;">LoveApp is for you if…</h2>
+    <div class="who">
+      <div class="who-row reveal"><span class="chk"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>You feel a partner or ex drifting and don't know what to say.</div>
+      <div class="who-row reveal s2"><span class="chk"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>You want to reconnect but keep freezing up over the wording.</div>
+      <div class="who-row reveal"><span class="chk"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>You'd rather communicate honestly than play games.</div>
+      <div class="who-row reveal s2"><span class="chk"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>You want a little guidance instead of guessing alone at 2am.</div>
+    </div>
+    <h3 class="reveal" style="font-family:var(--serif);font-weight:400;font-size:clamp(20px,3vw,24px);color:var(--plum);margin:42px 0 0;letter-spacing:-.01em;">And honestly — <em class="fr">not</em> for you if…</h3>
+    <div class="who reveal" style="margin-top:18px;">
+      <div class="who-row"><span class="chk x"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18M6 6l12 12"/></svg></span>You want a magic script to control someone or "make" him do something.</div>
+      <div class="who-row"><span class="chk x"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18M6 6l12 12"/></svg></span>You're hoping for mind games or manipulation — that's not what this is.</div>
+      <div class="who-row"><span class="chk x"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18M6 6l12 12"/></svg></span>You want a guarantee about someone else's choices — no honest tool can promise that.</div>
+    </div>
+    <p class="muted tiny reveal" style="margin-top:22px;max-width:60ch;">LoveApp is a communication and self-development tool. It's designed to help <em>you</em> express yourself — it doesn't control, and can't guarantee, how anyone else responds.</p>
+  </div></section>
+
+  <!-- ───────── COMPARISON ───────── -->
+  <section class="pad-tight" data-od-id="compare"><div class="inner">
+    <div class="measure">
+      <div class="label reveal"><span class="mark"></span>Your options</div>
+      <h2 class="reveal" style="margin:16px 0 4px;">Why women choose <em class="fr">LoveApp</em></h2>
+    </div>
+    <div class="compare reveal">
+      <div class="crow head"><div class="cell feat">&nbsp;</div><div class="cell us">LoveApp</div><div class="cell">Generic scripts</div><div class="cell">Guessing alone</div></div>
+      <div class="crow"><div class="cell feat">Personalized to your exact situation</div><div class="cell us"><span class="yes"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div></div>
+      <div class="crow"><div class="cell feat">Teaches you the technique</div><div class="cell us"><span class="yes"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div></div>
+      <div class="crow"><div class="cell feat">Sounds like you, not copy-paste</div><div class="cell us"><span class="yes"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div></div>
+      <div class="crow"><div class="cell feat">A community on the same journey</div><div class="cell us"><span class="yes"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div><div class="cell"><span class="no"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/></svg></span></div></div>
+      <div class="crow"><div class="cell feat">Cost</div><div class="cell us">$47 once</div><div class="cell">Free</div><div class="cell">Free</div></div>
+    </div>
+    <p class="punch reveal">The cheapest option is doing nothing — and it's the one that keeps you stuck.</p>
+    <p class="muted tiny reveal" style="margin-top:16px;max-width:60ch;">LoveApp is an educational communication tool — not therapy or counseling. For clinical concerns, a licensed professional is always the right call.</p>
+  </div></section>
+
+  <!-- ───────── VALUE STACK ───────── -->
+  <section class="pad-tight" data-od-id="included"><div class="inner">
+    <div class="label reveal"><span class="mark"></span>Included with your access</div>
+    <h2 class="reveal" style="margin:16px 0 4px;">Everything you get today</h2>
+    <div class="bonus reveal">
+      <!-- NOTE TO SIDNEY: every item below is a REAL deliverable verified in the LoveApp members area (screenshots). Mapping: "Understanding Him" = Module 2 "Unraveling the Male Mind"; "40 Questions" = Module 2 "40 Questions to Improve Communication"; "5 Signs" = Module 2 "5 Mistakes That Make Him Lose Interest"; "Reconnecting After Distance" = Module 4 "The Guide to Winning Your Ex Back" (reframed). OFF this page: Module 3 + Module 7 (sexual) and LoveApp GOLD (paid upsell).
+           VALUE STACK NOTE: the struck "value" figures below are a PRICING-PRESENTATION device. Only keep them if you can substantiate each as a price you genuinely sell (or have sold) the item for standalone — otherwise delete the per-item value spans and the stack-total to stay FTC-safe. The honest, always-true anchor is the comparison line in the offer box (a counseling session costs far more). -->
+      <div class="bonus-item"><div class="bi"><span class="gift"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg></span><div><h4>The LoveApp generator <span>· web app · lifetime access</span></h4><p>Personalized message suggestions for your exact situation, on any device.</p></div></div><span class="tag core">Core</span></div>
+      <div class="bonus-item"><div class="bi"><span class="gift"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h10"/></svg></span><div><h4>Situation Message Library <span>· 6 collections</span></h4><p>Reopening after silence, bringing back warmth, saying how you feel, rekindling, deeper talks, and confidence.</p></div></div><span class="tag core">Core</span></div>
+      <div class="bonus-item"><div class="bi"><span class="gift"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z"/></svg></span><div><h4>Understanding Him <span>· guide</span></h4><p>A candid look at how men actually think about love, commitment, and pulling away.</p></div></div><span class="tag">Bonus</span></div>
+      <div class="bonus-item"><div class="bi"><span class="gift"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 3v-3z"/></svg></span><div><h4>40 Questions to Reconnect <span>· conversation guide</span></h4><p>Forty questions, organized by depth, to reopen real communication and rebuild closeness.</p></div></div><span class="tag">Bonus</span></div>
+      <div class="bonus-item"><div class="bi"><span class="gift"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M5 19h14a2 2 0 001.84-2.75L13.74 4a2 2 0 00-3.5 0L3.18 16.25A2 2 0 005 19z"/></svg></span><div><h4>5 Signs That Push Him Away <span>· guide</span></h4><p>The five common, well-meant habits that quietly cool a connection — and what to do instead.</p></div></div><span class="tag">Bonus</span></div>
+      <div class="bonus-item"><div class="bi"><span class="gift"><svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></span><div><h4>Reconnecting After Distance <span>· 6-step guide</span></h4><p>A calm, step-by-step path back to connection when things have gone quiet.</p></div></div><span class="tag">Bonus</span></div>
+    </div>
+    <p class="muted tiny reveal" style="margin-top:18px;max-width:64ch;">Everything above is delivered digitally and is yours to keep. Want ongoing support? You can optionally add the <strong>Michael Collins AI coach</strong> or the <strong>Love Life Club</strong> community at checkout — both are clearly marked, monthly, and cancellable anytime.</p>
+  </div></section>
+
+  <!-- ───────── OFFER ───────── -->
+  <div class="offerwrap" id="offer" data-od-id="offer"><div class="inner">
+    <!-- HONEST URGENCY · TODO: only keep this if you run a REAL launch/price deadline.
+         Set the true end date in data-deadline (ISO). If there is NO real deadline,
+         DELETE this whole .urgency block — a fake countdown is deceptive (FTC/Digistore24 risk). -->
+    <div class="urgency reveal" id="urgency" data-deadline="2026-06-30T23:59:59">
+      <div class="ut"><b>Launch price ends soon.</b> The $47 one-time offer is part of this launch.</div>
+      <div class="clock">
+        <div class="seg"><b id="u-d">00</b><small>Days</small></div>
+        <div class="seg"><b id="u-h">00</b><small>Hrs</small></div>
+        <div class="seg"><b id="u-m">00</b><small>Min</small></div>
+        <div class="seg"><b id="u-s">00</b><small>Sec</small></div>
+      </div>
+    </div>
+    <div class="price-box reveal">
+      <div class="label"><span class="mark"></span>Get instant access</div>
+      <!-- Honest anchor: comparison against the real-world alternative, not an invented "value". -->
+      <p class="anchor">A single relationship-counseling session often runs <s>$100–$200</s>.</p>
+      <div class="amt"><small>$</small>47</div>
+      <div class="once">One-time payment · No hidden subscription for LoveApp itself</div>
+      <span class="perday">That's about the price of one dinner out — kept for life</span>
+      <a href="#" class="cta cta-primary cta-lg">Get My LoveApp Access <span class="arr">→</span></a>
+      <p class="cta-sub"><b>Instant access</b> · one-time payment · <b>60-day money-back guarantee</b></p>
+      <div class="pay"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Secure checkout via Digistore24</div>
+      <div class="paybadges" aria-label="Accepted payment methods">
+        <span class="pbadge" title="Visa"><span class="wm it">VISA</span></span>
+        <span class="pbadge" title="Mastercard"><svg viewBox="0 0 38 24" style="height:14px;width:auto;"><circle cx="15" cy="12" r="8" fill="#fff" opacity=".95"/><circle cx="23" cy="12" r="8" fill="#fff" opacity=".55"/></svg></span>
+        <span class="pbadge" title="American Express"><span class="amex">AMERICAN<br>EXPRESS</span></span>
+        <span class="pbadge" title="Apple Pay"><span class="wm" style="display:inline-flex;align-items:center;gap:1px;font-weight:600;"><svg viewBox="0 0 24 24" fill="#fff" style="height:12px;width:auto;"><path d="M17 12.5c0-2 1.6-3 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 6 1 8 .6 1 1.4 2 2.4 2 .9 0 1.3-.6 2.4-.6 1.1 0 1.4.6 2.4.6 1 0 1.6-.9 2.2-1.9.7-1 1-2 1-2.1-.1 0-1.9-.8-1.9-2.9zM15.5 6.2c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.2 1.1-.5.5-.9 1.4-.8 2.3.9.1 1.8-.4 2.2-1z"/></svg>Pay</span></span>
+        <span class="pbadge" title="Google Pay"><span class="wm" style="font-weight:600;">G<span style="font-weight:400;">&nbsp;Pay</span></span></span>
+        <span class="pbadge" title="PayPal"><svg viewBox="0 0 24 24" style="height:14px;width:auto;"><path d="M9.5 3.5h5.8c2.5 0 4.2 1.6 3.8 4.2-.4 2.7-2.6 4.3-5.4 4.3h-2L11 17.5H8L9.5 3.5z" fill="#fff" opacity=".95"/><path d="M7.6 6.2h5.8c2.5 0 4.2 1.6 3.8 4.2-.4 2.7-2.6 4.3-5.4 4.3h-2L9.1 20.2H6.1L7.6 6.2z" fill="#fff" opacity=".5"/></svg></span>
+      </div>
+    </div>
+
+    <div class="guarantee reveal">
+      <svg class="seal" viewBox="0 0 70 70" fill="none" aria-hidden="true"><circle cx="35" cy="35" r="33" fill="#CBE6D7"/><circle cx="35" cy="35" r="24" fill="#1E7A54"/><path d="M24 36l8 8 15-16" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <h4>60-Day Money-Back Guarantee</h4>
+        <p>Try LoveApp for a full 60 days. If it isn't right for you, email us for a complete refund — no hassle.</p>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- ───────── CREDIBILITY / AUTHORITY ───────── -->
+  <section class="cred" data-od-id="credibility"><div class="inner">
+    <div class="label reveal"><span class="mark"></span>Who's behind LoveApp</div>
+    <h2 class="reveal">Built on principles, <em class="fr" style="color:#FFD9A6;">not guesswork.</em></h2>
+    <p class="reveal">LoveApp wasn't thrown together. Its suggestions are built on well-established communication ideas — active listening, leading with shared positives, and phrasing that invites a response instead of a defense — applied to your specific situation.</p>
+    <!-- TODO (HIGH IMPACT): authority is the #1 thing both reference pages lean on. Fill this with REAL, verifiable credibility:
+         the creator's real name + relevant background, real press/mentions (only if true), real number of users (only if true).
+         Do NOT invent credentials or "as seen on" logos. -->
+    <div class="who-by reveal s2">
+      <div class="avatar">M</div>
+      <div>
+        <b>Created by Michael Collins</b>
+        <small>[TODO: one honest line of real background — e.g. "communication writer" / years helping couples. Keep it true.]</small>
+      </div>
+    </div>
+    <div class="basis reveal s3">
+      <span>Active-listening principles</span>
+      <span>Leading with shared positives</span>
+      <span>Response-inviting phrasing</span>
+      <span>Not therapy · educational tool</span>
+    </div>
+  </div></section>
+
+  <!-- ───────── COMMUNITY PROOF (qualitative — no invented numbers) ───────── -->
+  <section class="pad-tight" data-od-id="community"><div class="inner">
+    <div class="commband reveal">
+      <div class="av-row"><span style="background:#C1395C;">A</span><span style="background:#9E2949;">M</span><span style="background:#B98A48;">J</span><span style="background:#6F5A62;">S</span><span style="background:#2C0F1B;">+</span></div>
+      <div class="label" style="justify-content:center;"><span class="mark"></span>You won't do it alone</div>
+      <h2 style="margin:14px 0 12px;">A community of women <em class="fr">on the same journey</em></h2>
+      <p>Inside LoveApp, the Community is where women share what they're going through, ask for a second opinion before they hit send, and cheer each other on. Quiet wins, honest setbacks, real talk — no judgment.</p>
+    </div>
+  </div></section>
+
+  <!-- ───────── TESTIMONIALS ───────── -->
+  <section data-od-id="testimonials"><div class="inner">
+    <div class="label reveal"><span class="mark"></span>From women who use it</div>
+    <h2 class="reveal" style="margin:16px 0 4px;">Real words, real people</h2>
+    <div class="tnote reveal"><strong>⚠ Sidney:</strong> troque os cards abaixo por depoimentos <strong>reais e verificáveis</strong> (nome + permissão arquivada). Sem "ele me pediu em casamento em 3 dias". O disclaimer no rodapé cobre "results not typical".</div>
+    <div class="tgrid">
+      <div class="tcard reveal"><div class="stars">★★★★★</div><p>"His replies had gone down to one word, and I'd spend an hour rewriting a text before deleting it. LoveApp helped me find a calmer way to open up — I led with something we used to laugh about instead of 'we need to talk.' We actually had a real conversation that night. First one in a long time."</p><span class="who-said">Denise R., Columbus, OH · verified buyer</span></div>
+      <div class="tcard reveal s2"><div class="stars">★★★★★</div><p>"I'm the type who overthinks every message. What I love is that I stopped sending things in a panic. The suggestions gave me words that sounded like me, just clearer. I feel less anxious every time I pick up my phone now."</p><span class="who-said">Sharon M., Sacramento, CA · verified buyer</span></div>
+      <div class="tcard reveal s3"><div class="stars">★★★★★</div><p>"After things went quiet between us, I didn't know how to start again without it feeling heavy. This gave me a gentle place to begin. We're talking more like we used to — and honestly, I feel more like myself too."</p><span class="who-said">Karen T., Charlotte, NC · verified buyer</span></div>
+    </div>
+    <!-- NOTE TO SIDNEY: these are DRAFTS in the VSL's avatar/emotional arc, kept WHITE: feeling/process-based, NO guaranteed third-party outcomes, NO celebrity. CRITICAL before publishing: the quote + name pairing must be a REAL customer (FTC). Swap for real first name + last initial + city/state from genuine buyer feedback. -->
+    <p class="muted tiny reveal" style="margin-top:18px;max-width:60ch;">Testimonials reflect individual experiences and are not a promise of results. Outcomes vary from person to person.</p>
+  </div></section>
+
+  <!-- ───────── OFFER REPRISE (repeated CTA, like the reference pages) ───────── -->
+  <section class="reprise" data-od-id="reprise"><div class="inner">
+    <h3 class="reveal">Ready to find the right words?</h3>
+    <span class="anchor reveal">One-time <strong>$47</strong> · 60-day money-back guarantee · yours to keep for life</span>
+    <a href="#offer" class="cta cta-primary cta-lg reveal s2">Get My LoveApp Access <span class="arr">→</span></a>
+    <div class="paybadges reveal s3" aria-label="Accepted payment methods">
+      <span class="pbadge" title="Visa"><span class="wm it">VISA</span></span>
+      <span class="pbadge" title="Mastercard"><svg viewBox="0 0 38 24" style="height:14px;width:auto;"><circle cx="15" cy="12" r="8" fill="#fff" opacity=".95"/><circle cx="23" cy="12" r="8" fill="#fff" opacity=".55"/></svg></span>
+      <span class="pbadge" title="American Express"><span class="amex">AMERICAN<br>EXPRESS</span></span>
+      <span class="pbadge" title="Apple Pay"><span class="wm" style="display:inline-flex;align-items:center;gap:1px;font-weight:600;"><svg viewBox="0 0 24 24" fill="#fff" style="height:12px;width:auto;"><path d="M17 12.5c0-2 1.6-3 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 6 1 8 .6 1 1.4 2 2.4 2 .9 0 1.3-.6 2.4-.6 1.1 0 1.4.6 2.4.6 1 0 1.6-.9 2.2-1.9.7-1 1-2 1-2.1-.1 0-1.9-.8-1.9-2.9zM15.5 6.2c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.2 1.1-.5.5-.9 1.4-.8 2.3.9.1 1.8-.4 2.2-1z"/></svg>Pay</span></span>
+      <span class="pbadge" title="Google Pay"><span class="wm" style="font-weight:600;">G<span style="font-weight:400;">&nbsp;Pay</span></span></span>
+      <span class="pbadge" title="PayPal"><svg viewBox="0 0 24 24" style="height:14px;width:auto;"><path d="M9.5 3.5h5.8c2.5 0 4.2 1.6 3.8 4.2-.4 2.7-2.6 4.3-5.4 4.3h-2L11 17.5H8L9.5 3.5z" fill="#fff" opacity=".95"/><path d="M7.6 6.2h5.8c2.5 0 4.2 1.6 3.8 4.2-.4 2.7-2.6 4.3-5.4 4.3h-2L9.1 20.2H6.1L7.6 6.2z" fill="#fff" opacity=".5"/></svg></span>
+    </div>
+  </div></section>
+
+  <!-- ───────── FAQ ───────── -->
+  <section class="pad-tight" data-od-id="faq"><div class="inner">
+    <div class="label reveal"><span class="mark"></span>Common questions</div>
+    <h2 class="reveal" style="margin:16px 0 4px;">Before you decide</h2>
+    <div class="faq reveal">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>How is LoveApp delivered?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner"><p>As soon as your payment is confirmed, you'll get an email with instant access. LoveApp runs in your browser on any phone, tablet, or computer — nothing to download.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>Does it guarantee my partner will change?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner"><p>No — and we'd be wary of anything that claims it can. LoveApp helps <em>you</em> communicate more clearly and confidently. How another person responds is always up to them. What it can do is help you stop second-guessing every message.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>Isn't this manipulation?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner"><p>No — and that matters to us. LoveApp doesn't hand you tricks to control anyone. It helps you say what you actually mean, more clearly and calmly, so a real conversation has a chance. The goal is honesty, not "winning" — and you're always the one who decides what to send.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>Will this work for my situation?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner"><p>LoveApp personalizes its suggestions to what you tell it — whether you're reconnecting with an ex, warming up a long relationship, or just trying to say something difficult the right way. You're in control of which suggestions you actually use.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>I'm not great with technology. Is it easy to use?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner"><p>Yes. If you can send a text message, you can use LoveApp. You answer a few simple questions and get your suggestions — most people are up and running in a couple of minutes.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>What if I want a refund?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner"><p>You're covered by a 60-day money-back guarantee. If LoveApp isn't right for you, just email us within 60 days and we'll refund you in full.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>Will I be charged again?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button><div class="faq-a"><div class="faq-a-inner"><p>LoveApp is a one-time purchase. If you choose to add any optional subscription product at checkout, it's clearly marked and you'll always get an email reminder before any renewal.</p></div></div></div>
+    </div>
+  </div></section>
+
+  <!-- ───────── FINAL ───────── -->
+  <section class="final" data-od-id="final">
+    <div class="inner reveal">
+      <svg class="sig" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true"><path d="M32 54S8 40 8 23C8 15 14 10 20 10c5 0 9 3 12 7 3-4 7-7 12-7 6 0 12 5 12 13 0 17-24 31-24 31z"/><path d="M42 10l16-3-6 6 8 2-13 4z"/><path d="M16 48l32-32" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none" opacity=".6"/></svg>
+      <div class="label" style="justify-content:center;color:var(--gold-soft);margin-bottom:8px;"><span class="mark" style="background:var(--gold-soft);"></span>One last thing</div>
+      <h2>The next message <em class="fr">doesn't have to be a guess.</em></h2>
+      <p>Every quiet day makes the next message feel a little heavier. Give yourself a calmer, clearer way to say what you mean — and reopen the door before more time passes.</p>
+      <a href="#" class="cta cta-ghost cta-lg">Get My LoveApp Access — $47 <span class="arr">→</span></a>
+      <div class="paybadges" style="margin-top:22px;" aria-label="Accepted payment methods">
+        <span class="pbadge" title="Visa"><span class="wm it">VISA</span></span>
+        <span class="pbadge" title="Mastercard"><svg viewBox="0 0 38 24" style="height:14px;width:auto;"><circle cx="15" cy="12" r="8" fill="#fff" opacity=".95"/><circle cx="23" cy="12" r="8" fill="#fff" opacity=".55"/></svg></span>
+        <span class="pbadge" title="American Express"><span class="amex">AMERICAN<br>EXPRESS</span></span>
+        <span class="pbadge" title="Apple Pay"><span class="wm" style="display:inline-flex;align-items:center;gap:1px;font-weight:600;"><svg viewBox="0 0 24 24" fill="#fff" style="height:12px;width:auto;"><path d="M17 12.5c0-2 1.6-3 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 6 1 8 .6 1 1.4 2 2.4 2 .9 0 1.3-.6 2.4-.6 1.1 0 1.4.6 2.4.6 1 0 1.6-.9 2.2-1.9.7-1 1-2 1-2.1-.1 0-1.9-.8-1.9-2.9zM15.5 6.2c.5-.6.9-1.5.8-2.4-.8 0-1.7.5-2.2 1.1-.5.5-.9 1.4-.8 2.3.9.1 1.8-.4 2.2-1z"/></svg>Pay</span></span>
+        <span class="pbadge" title="Google Pay"><span class="wm" style="font-weight:600;">G<span style="font-weight:400;">&nbsp;Pay</span></span></span>
+        <span class="pbadge" title="PayPal"><svg viewBox="0 0 24 24" style="height:14px;width:auto;"><path d="M9.5 3.5h5.8c2.5 0 4.2 1.6 3.8 4.2-.4 2.7-2.6 4.3-5.4 4.3h-2L11 17.5H8L9.5 3.5z" fill="#fff" opacity=".95"/><path d="M7.6 6.2h5.8c2.5 0 4.2 1.6 3.8 4.2-.4 2.7-2.6 4.3-5.4 4.3h-2L9.1 20.2H6.1L7.6 6.2z" fill="#fff" opacity=".5"/></svg></span>
+      </div>
+      <p class="fineprint">60-day money-back guarantee · Secure checkout via Digistore24</p>
+    </div>
+  </section>
+
+  <!-- ───────── FOOTER ───────── -->
+  <footer data-od-id="footer">
+    <div class="disc">
+      <div class="brandline">LoveApp</div>
+      <p><strong>Disclaimer:</strong> LoveApp provides communication guidance, educational content, and self-development tools. It is not therapy, counseling, or psychological treatment, and it is not a substitute for professional advice. LoveApp does not guarantee any specific outcome, and no product can determine or control another person's feelings, decisions, or behavior. Individual results vary.</p>
+      <p style="margin-top:12px;">This purchase is processed by Digistore24 and appears on your statement as <strong>DS24*LOVEAPP</strong>. Digistore24 is the authorized reseller of this product.</p>
+      <p style="margin-top:12px;">© 2026 LoveApp · All rights reserved.</p>
+      <div class="legal-links">
+        <a href="https://www.michaelcollins.online/refund-policy-page">Refund Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="mailto:loveapp.michaelcollins@gmail.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ───────── FLOATING SUPPORT (optional · point to your real channel) ───────── -->
+<a class="support" href="mailto:loveapp.michaelcollins@gmail.com" aria-label="Contact support" title="Need help? Contact us">
+  <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.4-4 8-9 8a9.9 9.9 0 01-4-.8L3 21l1.3-3.9A7.6 7.6 0 013 12c0-4.4 4-8 9-8s9 3.6 9 8z"/></svg>
+</a>
+
+<!-- ───────── STICKY CTA ───────── -->
+<div class="sticky" id="sticky">
+  <div class="sticky-inner">
+    <div class="lbl">LoveApp Access<small>One-time $47 · 60-day guarantee · keep for life</small></div>
+    <a href="#offer" class="cta cta-primary">Get Access →</a>
+  </div>
+</div>
+
+<script>
+  function tog(btn){var item=btn.closest('.faq-item');var open=item.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el);});
+  var hero=document.querySelector('.hero'),sticky=document.getElementById('sticky');
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){sticky.classList.toggle('show',!e.isIntersecting);});},{threshold:0});
+  so.observe(hero);
+
+  // Honest countdown — drives the launch banner from data-deadline. Hides itself once past.
+  (function(){
+    var box=document.getElementById('urgency'); if(!box) return;
+    var end=new Date(box.getAttribute('data-deadline')).getTime();
+    var d=document.getElementById('u-d'),h=document.getElementById('u-h'),m=document.getElementById('u-m'),s=document.getElementById('u-s');
+    function pad(n){return n<10?'0'+n:''+n;}
+    function tick(){
+      var diff=end-Date.now();
+      if(isNaN(end)||diff<=0){box.style.display='none';return;}
+      var dd=Math.floor(diff/86400000),hh=Math.floor(diff%86400000/3600000),mm=Math.floor(diff%3600000/60000),ss=Math.floor(diff%60000/1000);
+      d.textContent=pad(dd);h.textContent=pad(hh);m.textContent=pad(mm);s.textContent=pad(ss);
+    }
+    tick(); setInterval(tick,1000);
+  })();
+</script>
+</body>
+</html>

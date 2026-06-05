@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michael Collins AI — Your expert, in your pocket 24/7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#080A10; --bg-2:#0C0F17; --panel:#11151F; --panel-2:#161B27;
+    --ink:#F5F2EA; --soft:#C7CDD9; --muted:#8A93A4; --faint:#5C6474;
+    --gold:#E8B45F; --gold-2:#D49A3F; --gold-deep:#B57E2E;
+    --gold-soft:rgba(232,180,95,.12); --gold-line:rgba(232,180,95,.28);
+    --rose:#E7C7AE; --green:#5FBF8E; --green-soft:rgba(95,191,142,.14);
+    --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+    --sans:'Inter',system-ui,sans-serif; --disp:'Space Grotesk',system-ui,sans-serif;
+    --shadow:0 24px 60px -20px rgba(0,0,0,.7);
+    --glow:0 0 0 1px var(--gold-line),0 20px 60px -18px rgba(232,180,95,.35);
+    --ease:cubic-bezier(0.23,1,0.32,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--sans);background:var(--bg);color:var(--ink);
+    line-height:1.6;font-size:17px;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--gold);color:#1a1206;}
+  h1,h2,h3,h4{font-family:var(--disp);font-weight:600;line-height:1.12;letter-spacing:-.02em;}
+  h1{font-size:clamp(34px,6.4vw,62px);font-weight:700;}
+  h2{font-size:clamp(27px,4.4vw,44px);}
+  h3{font-size:clamp(21px,3vw,28px);}
+  p{color:var(--soft);}
+  em{font-style:normal;color:var(--gold);}
+  strong{color:var(--ink);font-weight:600;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .narrow{max-width:760px;margin-left:auto;margin-right:auto;}
+
+  /* ====== background texture ====== */
+  .bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;}
+  .bg-fx::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(1100px 620px at 50% -8%, rgba(232,180,95,.16), transparent 60%),
+      radial-gradient(900px 700px at 88% 12%, rgba(125,90,200,.10), transparent 60%),
+      linear-gradient(180deg,#0A0C13 0%,#080A10 40%,#070910 100%);}
+  .bg-fx::after{content:"";position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:64px 64px;mask-image:radial-gradient(1000px 700px at 50% 0%,#000,transparent 75%);}
+  .content{position:relative;z-index:1;}
+
+  /* ====== nav ====== */
+  nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);
+    background:rgba(8,10,16,.72);border-bottom:1px solid var(--line);}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--disp);font-weight:600;letter-spacing:-.01em;font-size:16px;}
+  .brand .orb{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    background:linear-gradient(150deg,var(--gold),var(--gold-deep));box-shadow:0 6px 18px -6px var(--gold);color:#1a1206;}
+  .brand .orb svg{width:17px;height:17px;}
+  .brand small{display:block;font-family:var(--sans);font-weight:500;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:-2px;}
+  .nav-cta{display:none;}
+  @media(min-width:680px){.nav-cta{display:inline-flex;}}
+
+  /* ====== buttons ====== */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--sans);font-weight:600;font-size:16px;cursor:pointer;border:none;
+    padding:16px 30px;border-radius:14px;transition:transform .15s var(--ease),box-shadow .25s var(--ease),filter .2s;}
+  .btn-gold{background:linear-gradient(150deg,#F2C977,var(--gold-2));color:#1c1305;box-shadow:0 14px 34px -12px rgba(232,180,95,.7);}
+  .btn-gold:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 20px 44px -12px rgba(232,180,95,.85);}
+  .btn-gold:active{transform:translateY(0);}
+  .btn-sm{padding:11px 20px;font-size:14.5px;border-radius:11px;}
+  .btn-ghost{background:rgba(255,255,255,.04);color:var(--ink);border:1px solid var(--line-2);}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);}
+  .btn .px{font-weight:700;}
+  .cta-note{margin-top:14px;font-size:13.5px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  .cta-note span{display:inline-flex;align-items:center;gap:6px;}
+  .cta-note svg{width:15px;height:15px;color:var(--green);}
+
+  /* ====== eyebrow / chips ====== */
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);background:var(--gold-soft);border:1px solid var(--gold-line);padding:8px 16px;border-radius:100px;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(232,180,95,.6);animation:pulse 2.2s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,180,95,.55);}70%{box-shadow:0 0 0 9px rgba(232,180,95,0);}100%{box-shadow:0 0 0 0 rgba(232,180,95,0);}}
+
+  /* ====== hero ====== */
+  header{padding:64px 0 30px;text-align:center;}
+  header h1{margin:24px auto 0;max-width:16ch;}
+  header h1 .hl{background:linear-gradient(110deg,var(--gold),#F4D79A 50%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .lead{font-size:clamp(17px,2.3vw,20.5px);color:var(--soft);max-width:54ch;margin:22px auto 0;}
+  .hero-cta{margin-top:34px;display:flex;flex-direction:column;align-items:center;}
+
+  /* video frame */
+  .vsl{margin:46px auto 0;max-width:840px;position:relative;}
+  .vsl-frame{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line-2);
+    background:linear-gradient(160deg,#13131c,#0b0c12);box-shadow:var(--shadow);aspect-ratio:16/9;}
+  .vsl-frame::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 240px at 50% 40%,rgba(232,180,95,.14),transparent 70%);}
+  .vsl-play{position:absolute;inset:0;display:grid;place-items:center;}
+  .vsl-play button{width:84px;height:84px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(150deg,#F2C977,var(--gold-2));color:#1c1305;display:grid;place-items:center;
+    box-shadow:0 18px 50px -10px rgba(232,180,95,.7);transition:transform .2s var(--ease);}
+  .vsl-play button:hover{transform:scale(1.07);}
+  .vsl-play svg{width:34px;height:34px;margin-left:4px;}
+  .vsl-tag{position:absolute;left:16px;top:16px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+    letter-spacing:.06em;background:rgba(0,0,0,.5);border:1px solid var(--line-2);padding:7px 13px;border-radius:9px;color:var(--soft);}
+  .vsl-tag .rec{width:8px;height:8px;border-radius:50%;background:#ff5a5a;animation:pulse 1.6s infinite;}
+  .vsl-cap{text-align:center;margin-top:14px;font-size:13.5px;color:var(--muted);}
+
+  .trust{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:center;margin:30px auto 0;max-width:640px;}
+  .trust .t{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--soft);
+    background:rgba(255,255,255,.03);border:1px solid var(--line);padding:9px 15px;border-radius:100px;}
+  .trust .t svg{width:15px;height:15px;color:var(--gold);}
+
+  /* ====== sections ====== */
+  section{padding:78px 0;position:relative;}
+  .sec-head{text-align:center;max-width:62ch;margin:0 auto 50px;}
+  .sec-head h2{margin-top:14px;}
+  .sec-head p{margin-top:18px;font-size:18px;}
+  .label{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+
+  /* divider rule */
+  .rule{height:1px;background:linear-gradient(90deg,transparent,var(--line-2),transparent);max-width:1120px;margin:0 auto;}
+
+  /* problem narrative */
+  .story{max-width:720px;margin:0 auto;}
+  .story p{font-size:18.5px;margin-top:20px;color:var(--soft);}
+  .story p.big{font-size:clamp(22px,3vw,28px);font-family:var(--disp);color:var(--ink);line-height:1.35;letter-spacing:-.01em;}
+  .metaphor{display:grid;gap:18px;margin:40px 0;grid-template-columns:1fr;}
+  @media(min-width:620px){.metaphor{grid-template-columns:1fr 1fr;}}
+  .meta-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;}
+  .meta-card .ic{width:46px;height:46px;border-radius:13px;background:var(--gold-soft);border:1px solid var(--gold-line);display:grid;place-items:center;color:var(--gold);margin-bottom:16px;}
+  .meta-card .ic svg{width:24px;height:24px;}
+  .meta-card h4{font-size:18px;margin-bottom:8px;}
+  .meta-card p{font-size:15.5px;margin:0;color:var(--muted);}
+
+  /* DM / panic testimonial */
+  .dm{max-width:560px;margin:8px auto 0;background:linear-gradient(165deg,#15131a,#100f15);
+    border:1px solid var(--line-2);border-radius:22px;padding:8px;box-shadow:var(--shadow);}
+  .dm-top{display:flex;align-items:center;gap:12px;padding:14px 16px 12px;border-bottom:1px solid var(--line);}
+  .dm-top .av{width:40px;height:40px;border-radius:50%;background:linear-gradient(150deg,#7a5cff,#b06bff);display:grid;place-items:center;font-weight:700;color:#fff;font-size:15px;}
+  .dm-top .nm{font-weight:600;font-size:15px;}
+  .dm-top .st{font-size:12px;color:var(--muted);margin-top:1px;}
+  .dm-body{padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px;}
+  .bub{max-width:85%;padding:11px 15px;border-radius:16px;font-size:15px;line-height:1.5;}
+  .bub.them{align-self:flex-start;background:#22202b;border-bottom-left-radius:5px;color:var(--soft);}
+  .bub.time{align-self:center;font-size:11.5px;color:var(--faint);background:none;padding:2px;}
+  .dm-foot{padding:10px 16px 16px;font-size:13px;color:var(--muted);font-style:italic;}
+
+  .pullquote{text-align:center;max-width:20ch;margin:54px auto 0;font-family:var(--disp);font-weight:600;
+    font-size:clamp(26px,4.5vw,40px);line-height:1.18;letter-spacing:-.02em;}
+  .pullquote .a{color:var(--faint);}
+  .pullquote .b{background:linear-gradient(110deg,var(--gold),#F4D79A);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  /* ====== how it works / chat product ====== */
+  .how{display:grid;gap:40px;align-items:center;grid-template-columns:1fr;}
+  @media(min-width:920px){.how{grid-template-columns:1.05fr .95fr;gap:64px;}}
+  .steps{display:flex;flex-direction:column;gap:14px;}
+  .step{display:flex;gap:16px;padding:20px;border-radius:16px;background:var(--panel);border:1px solid var(--line);transition:border-color .3s var(--ease),transform .3s var(--ease);}
+  .step:hover{border-color:var(--gold-line);transform:translateX(4px);}
+  .step .n{flex-shrink:0;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-family:var(--disp);font-weight:700;
+    background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--gold);}
+  .step h4{font-size:17.5px;margin-bottom:5px;}
+  .step p{font-size:14.5px;margin:0;color:var(--muted);}
+
+  /* phone mockup */
+  .phone{justify-self:center;width:300px;max-width:84vw;border-radius:38px;padding:11px;
+    background:linear-gradient(160deg,#23242e,#0e0f15);border:1px solid var(--line-2);box-shadow:var(--shadow),0 0 80px -30px var(--gold);}
+  .phone-scr{background:#0a0b11;border-radius:30px;overflow:hidden;}
+  .ph-top{display:flex;align-items:center;gap:11px;padding:18px 16px 14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#11131c,#0c0d14);}
+  .ph-top .av{width:38px;height:38px;border-radius:11px;background:linear-gradient(150deg,var(--gold),var(--gold-deep));display:grid;place-items:center;color:#1a1206;}
+  .ph-top .av svg{width:20px;height:20px;}
+  .ph-top .nm{font-family:var(--disp);font-weight:600;font-size:15px;}
+  .ph-top .on{font-size:11.5px;color:var(--green);display:flex;align-items:center;gap:5px;margin-top:1px;}
+  .ph-top .on i{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
+  .ph-body{padding:16px 14px 18px;display:flex;flex-direction:column;gap:9px;min-height:330px;}
+  .m{max-width:82%;padding:10px 13px;border-radius:15px;font-size:13.5px;line-height:1.45;}
+  .m.me{align-self:flex-end;background:linear-gradient(150deg,#34301f,#2a2615);border:1px solid var(--gold-line);color:#f3e6cb;border-bottom-right-radius:5px;}
+  .m.ai{align-self:flex-start;background:#191c27;border:1px solid var(--line);color:var(--soft);border-bottom-left-radius:5px;}
+  .m.ai b{color:var(--gold);}
+  .m .scr-att{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);}
+  .m .scr-att svg{width:15px;height:15px;}
+  .typing{align-self:flex-start;display:flex;gap:4px;padding:12px 14px;background:#191c27;border:1px solid var(--line);border-radius:15px;border-bottom-left-radius:5px;}
+  .typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:bob 1.2s infinite;}
+  .typing i:nth-child(2){animation-delay:.18s;}.typing i:nth-child(3){animation-delay:.36s;}
+  @keyframes bob{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-4px);}}
+
+  .deliver{margin-top:54px;max-width:840px;margin-left:auto;margin-right:auto;
+    background:linear-gradient(160deg,var(--panel-2),var(--panel));border:1px solid var(--gold-line);border-radius:22px;padding:34px 30px;text-align:center;}
+  .deliver h3{margin-bottom:8px;}
+  .deliver .out{display:grid;gap:12px;grid-template-columns:1fr;margin:26px 0 4px;text-align:left;}
+  @media(min-width:640px){.deliver .out{grid-template-columns:1fr 1fr;}}
+  .deliver .out .o{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--soft);}
+  .deliver .out .o svg{flex-shrink:0;width:21px;height:21px;color:var(--gold);margin-top:2px;}
+  .deliver .tagline{margin-top:24px;font-family:var(--disp);font-size:clamp(17px,2.5vw,21px);color:var(--ink);}
+  .deliver .tagline em{color:var(--gold);}
+
+  /* ====== testimonials ====== */
+  .tgrid{display:grid;gap:18px;grid-template-columns:1fr;}
+  @media(min-width:640px){.tgrid{grid-template-columns:1fr 1fr;}}
+  @media(min-width:980px){.tgrid{grid-template-columns:repeat(3,1fr);}}
+  .tcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;transition:border-color .3s var(--ease),transform .3s var(--ease);}
+  .tcard:hover{border-color:var(--gold-line);transform:translateY(-3px);}
+  .tcard .stars{display:flex;gap:2px;color:var(--gold);}
+  .tcard .stars svg{width:16px;height:16px;}
+  .tcard p{font-size:15px;color:var(--soft);margin:0;}
+  .tcard .who{display:flex;align-items:center;gap:11px;margin-top:auto;}
+  .tcard .who .av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:14px;}
+  .tcard .who .nm{font-size:14px;font-weight:600;}
+  .tcard .who .vf{font-size:12px;color:var(--green);display:flex;align-items:center;gap:4px;}
+  .tcard .who .vf svg{width:13px;height:13px;}
+
+  /* ====== value / pricing ====== */
+  .value{max-width:720px;margin:0 auto;text-align:center;}
+  .price-strike{display:flex;flex-direction:column;align-items:center;gap:6px;margin:34px 0;}
+  .price-strike .was{font-size:18px;color:var(--muted);}
+  .price-strike .was s{color:var(--faint);}
+  .price-strike .arrow{color:var(--gold);font-size:22px;}
+  .pricecard{position:relative;max-width:520px;margin:44px auto 0;border-radius:26px;padding:2px;
+    background:linear-gradient(160deg,var(--gold),var(--gold-deep) 60%,rgba(232,180,95,.2));box-shadow:var(--glow);}
+  .pricecard-in{background:linear-gradient(170deg,#13141d,#0c0d13);border-radius:24px;padding:38px 32px;text-align:center;}
+  .pc-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    background:linear-gradient(150deg,#F2C977,var(--gold-2));color:#1c1305;padding:7px 18px;border-radius:100px;box-shadow:0 10px 24px -8px rgba(232,180,95,.6);}
+  .pc-name{font-family:var(--disp);font-weight:600;font-size:20px;}
+  .pc-price{display:flex;align-items:flex-start;justify-content:center;gap:4px;margin:14px 0 2px;}
+  .pc-price .cur{font-size:26px;font-weight:600;color:var(--gold);margin-top:10px;}
+  .pc-price .amt{font-family:var(--disp);font-weight:700;font-size:74px;line-height:1;letter-spacing:-.03em;
+    background:linear-gradient(150deg,#F4D79A,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .pc-price .per{align-self:flex-end;font-size:16px;color:var(--muted);margin-bottom:12px;}
+  .pc-sub{font-size:14px;color:var(--muted);}
+  .pc-feat{text-align:left;display:flex;flex-direction:column;gap:11px;margin:26px 0;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .pc-feat .f{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--soft);}
+  .pc-feat .f svg{flex-shrink:0;width:19px;height:19px;color:var(--green);margin-top:2px;}
+  .pricecard .btn{width:100%;}
+
+  .guarantee{max-width:620px;margin:54px auto 0;display:flex;gap:22px;align-items:center;
+    background:var(--green-soft);border:1px solid rgba(95,191,142,.3);border-radius:20px;padding:26px 28px;}
+  .guarantee .seal{flex-shrink:0;width:70px;height:70px;border-radius:50%;display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%,#2a4a3c,#16261f);border:2px solid var(--green);color:var(--green);}
+  .guarantee .seal svg{width:34px;height:34px;}
+  .guarantee h4{font-size:18px;margin-bottom:5px;color:var(--ink);}
+  .guarantee p{font-size:14.5px;margin:0;color:var(--soft);}
+  @media(max-width:520px){.guarantee{flex-direction:column;text-align:center;}}
+
+  /* ====== close ====== */
+  .close{text-align:center;max-width:720px;margin:0 auto;}
+  .close .q{font-family:var(--disp);font-weight:600;font-size:clamp(22px,3.6vw,32px);line-height:1.3;
+    margin:8px auto 0;max-width:24ch;}
+  .close .q em{color:var(--gold);}
+  .close p{margin-top:22px;font-size:18px;}
+  .close .sig{margin-top:34px;font-family:var(--disp);font-size:20px;color:var(--gold);}
+
+  /* ====== faq ====== */
+  .faq{max-width:760px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;
+    background:none;border:none;cursor:pointer;text-align:left;padding:24px 4px;color:var(--ink);
+    font-family:var(--disp);font-weight:500;font-size:clamp(16.5px,2.2vw,19px);letter-spacing:-.01em;}
+  .faq-q .pm{flex-shrink:0;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+    background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--gold);transition:transform .3s var(--ease);}
+  .faq-q .pm svg{width:16px;height:16px;}
+  .faq-q[aria-expanded="true"] .pm{transform:rotate(45deg);}
+  .faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .34s var(--ease),opacity .3s var(--ease);opacity:0;}
+  .faq-q[aria-expanded="true"]+.faq-a{grid-template-rows:1fr;opacity:1;}
+  .faq-a-inner{overflow:hidden;}
+  .faq-a-inner p{padding:0 4px 24px;font-size:15.5px;color:var(--soft);}
+  .faq-a-inner ul{padding:0 4px 24px 24px;color:var(--soft);font-size:15px;}
+  .faq-a-inner li{margin:4px 0;}
+
+  /* ====== final cta band ====== */
+  .band{margin:0 auto;max-width:1120px;text-align:center;
+    background:linear-gradient(160deg,rgba(232,180,95,.1),rgba(232,180,95,.02));
+    border:1px solid var(--gold-line);border-radius:28px;padding:clamp(40px,6vw,68px) 28px;}
+  .band h2{max-width:18ch;margin:14px auto 0;}
+  .band p{max-width:50ch;margin:18px auto 0;font-size:18px;}
+  .band .btn{margin-top:30px;}
+
+  /* ====== footer ====== */
+  footer{padding:60px 0 90px;text-align:center;border-top:1px solid var(--line);margin-top:80px;}
+  footer .brand{justify-content:center;margin-bottom:18px;}
+  .disc{max-width:70ch;margin:0 auto;font-size:12.5px;color:var(--faint);line-height:1.7;}
+  .foot-links{margin-top:20px;font-size:13px;color:var(--muted);display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+
+  /* ====== sticky bar ====== */
+  .stickybar{position:fixed;left:0;right:0;bottom:0;z-index:50;transform:translateY(110%);transition:transform .4s var(--ease);
+    background:rgba(10,12,18,.92);backdrop-filter:blur(16px);border-top:1px solid var(--gold-line);}
+  .stickybar.show{transform:translateY(0);}
+  .sb-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;}
+  .sb-l{display:flex;flex-direction:column;}
+  .sb-l .a{font-family:var(--disp);font-weight:600;font-size:15px;}
+  .sb-l .b{font-size:12.5px;color:var(--muted);}
+  .sb-in .btn{flex-shrink:0;}
+  @media(max-width:560px){.sb-l .b{display:none;}.sb-in .btn{padding:13px 20px;font-size:14.5px;}}
+
+  /* ====== reveal ====== */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.s2{transition-delay:.08s;}.reveal.s3{transition-delay:.16s;}.reveal.s4{transition-delay:.24s;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}*{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+<div class="content">
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-in">
+    <div class="brand">
+      <span class="orb"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9l4.4-1.4L12 3zM5 16l.8 2.2L8 19l-2.2.8L5 22l-.8-2.2L2 19l2.2-.8L5 16z"/></svg></span>
+      <span>Michael Collins <span style="color:var(--gold)">AI</span><small>Your private clone · 24/7</small></span>
+    </div>
+    <a href="#offer" class="btn btn-gold btn-sm nav-cta">Upgrade — <span class="px">$27/mo</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span>Exclusive upgrade · LoveApp members only</span>
+    <h1 class="reveal s2">Imagine having <span class="hl">me beside you</span> — every time he replies.</h1>
+    <p class="lead reveal s3">Michael Collins AI is my virtual clone, trained on 36 years of experience. It reads his messages in real time and tells you exactly <strong>what</strong> to say, <strong>when</strong> to say it, and <strong>when to wait</strong> — so you never again send the right message at the wrong moment.</p>
+
+    <div class="hero-cta reveal s3">
+      <a href="#offer" class="btn btn-gold">Unlock Michael Collins AI — <span class="px">$27/mo</span></a>
+      <div class="cta-note">
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Cancel anytime · 1 click</span>
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>60-day full guarantee</span>
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Less than $1 a day</span>
+      </div>
+    </div>
+
+    <!-- VSL -->
+    <div class="vsl reveal s2">
+      <div class="vsl-frame">
+        <div class="vsl-tag"><span class="rec"></span>Watch · 3 min · sound on</div>
+        <div class="vsl-play"><button aria-label="Play video"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button></div>
+      </div>
+      <p class="vsl-cap">Press play — Michael explains the one mistake that quietly sabotages most women in their first hours.</p>
+    </div>
+
+    <div class="trust reveal s3">
+      <span class="t"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Available 24 / 7</span>
+      <span class="t"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9z"/></svg>36+ years of experience</span>
+      <span class="t"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7l9-4 9 4-9 4-9-4zm0 5l9 4 9-4M3 17l9 4 9-4"/></svg>Trained on hundreds of real cases</span>
+    </div>
+  </div>
+</header>
+
+<div class="rule"></div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">The honest truth</span>
+      <h2>The right phrase, sent at the wrong moment, can ruin everything.</h2>
+      <p>As thousands of women started using the Dopamine Seeds, we discovered an innocent — but dangerous — mistake quietly sabotaging their results. And it almost always happens in the first few hours, when excitement is highest.</p>
+    </div>
+
+    <div class="story">
+      <p class="big reveal">Take Marilyn. She followed the first Seed perfectly — and Louis replied within minutes, something that hadn't happened in weeks.</p>
+      <p class="reveal">But caught up in that rush, she sent another Seed too soon. He got confused. The conversation lost its rhythm. A few hours later, this is the message she sent me — in a panic:</p>
+    </div>
+
+    <!-- panic DM -->
+    <div class="dm reveal s2">
+      <div class="dm-top">
+        <div class="av">M</div>
+        <div><div class="nm">Marilyn</div><div class="st">to Michael · just now</div></div>
+      </div>
+      <div class="dm-body">
+        <div class="bub them">Michael… I loved the phrases. I got access right away and everything was perfect — it really felt personalized for me. 🥹</div>
+        <div class="bub them">He replied immediately — that hadn't happened in a long time…</div>
+        <div class="bub them">But I got carried away… and sent another Seed after that. He seemed confused, and I didn't know what to do next.</div>
+        <div class="bub them">I tried to keep it going, and now he says he needs some space. I don't know what to do… did I ruin everything? Please help me. 💔</div>
+        <div class="bub time">delivered 2:14 AM</div>
+      </div>
+      <div class="dm-foot">She had the perfect plan. What she didn't have was someone to tell her <em>when</em> to use it.</div>
+    </div>
+
+    <div class="metaphor narrow reveal s2">
+      <div class="meta-card">
+        <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a4 4 0 000-8 6 6 0 00-11.6-1.5A4 4 0 003 15z"/></svg></div>
+        <h4>Male behavior is like the weather</h4>
+        <p>Sunny in the morning, cloudy by noon, raining out of nowhere. You can choose which Seed to send — but never how his brain reacts in that exact moment.</p>
+      </div>
+      <div class="meta-card">
+        <div class="ic"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.5-5.5a8 8 0 1111 0L9 20z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <h4>Communication needs a GPS</h4>
+        <p>Just like a GPS recalculates the second traffic appears, your next message must be recalculated the moment he reacts outside his normal pattern. That's where most women freeze.</p>
+      </div>
+    </div>
+
+    <p class="pullquote reveal">
+      <span class="a">It's not just</span> what <span class="a">you say.</span><br>
+      <span class="a">It's</span> <span class="b">when</span> <span class="a">you say it.</span>
+    </p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Why I built this</span>
+      <h2>I couldn't sit beside every woman at 2am. So I built something that can.</h2>
+      <p>My team and I tried to guide every case by hand — answering emails, reading conversations one by one. But as more women joined LoveApp, it was clear that even working around the clock, we couldn't be there in the exact moment each woman needed us.</p>
+    </div>
+    <div class="story">
+      <p class="reveal">So I went back to the same developers who created LoveApp. Together we took everything — 36 years of analysis, hundreds of real women, the science behind the Dopamine Seeds — and turned it into something that can guide you in real time, with surgical precision, through every response and every nuance of his behavior.</p>
+      <p class="big reveal s2">A tool that thinks exactly the way I think… but can be with you 24 hours a day, 7 days a week — at the exact moment you need it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">How it works</span>
+      <h2>Talk to it like a friend. Get an expert's answer.</h2>
+      <p>You'll get an exclusive chat with my virtual clone. All you do is exactly what you already do every day — send a message.</p>
+    </div>
+
+    <div class="how">
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n">1</div>
+          <div><h4>Send a screenshot of the conversation</h4><p>It reads what he said — the tone, the intention, the emotional shift — and tells you exactly what to do next.</p></div>
+        </div>
+        <div class="step reveal s2">
+          <div class="n">2</div>
+          <div><h4>Or send a voice message of what he said</h4><p>It understands emotion, hesitation, interest, or withdrawal — and shapes your response around it.</p></div>
+        </div>
+        <div class="step reveal s3">
+          <div class="n">3</div>
+          <div><h4>Ask what to do in ANY situation</h4><p>"He disappeared." "He replied briefly." "He went cold." "He said he's confused." "He tested my boundaries." You'll never be stuck again.</p></div>
+        </div>
+      </div>
+
+      <!-- phone -->
+      <div class="phone reveal s2">
+        <div class="phone-scr">
+          <div class="ph-top">
+            <div class="av"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9z"/></svg></div>
+            <div><div class="nm">Michael Collins AI</div><div class="on"><i></i>online · typically replies instantly</div></div>
+          </div>
+          <div class="ph-body">
+            <div class="m me"><div class="scr-att"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v14H4zM4 15l4-4 4 4 3-3 5 5"/><circle cx="9" cy="9" r="1.5"/></svg>screenshot.jpg</div></div>
+            <div class="m me">He just replied "maybe 🤷" to my dinner invite. What do I do?? 😩</div>
+            <div class="typing"><i></i><i></i><i></i></div>
+            <div class="m ai">Don't double-text — that "maybe" is a temperature check, not a no. His dopamine is curious but cautious right now.</div>
+            <div class="m ai"><b>Wait ~3 hours</b>, then reply word for word:<br>"No pressure either way 😌 if it happens, it happens — I'm easy."</div>
+            <div class="m ai"><b>Do NOT</b> send Seed #4 yet. Let him come a step closer first. I'll watch his next reply with you. 💛</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- what it delivers -->
+    <div class="deliver reveal">
+      <h3>Then, with surgical precision, it tells you:</h3>
+      <div class="out">
+        <div class="o"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span><strong>What to reply</strong> — word for word.</span></div>
+        <div class="o"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span><strong>When to reply</strong> — now, later, or not at all.</span></div>
+        <div class="o"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span><strong>Which Seed to use</strong> — and which one <em>not</em> to.</span></div>
+        <div class="o"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span><strong>How to keep his focus</strong> high and fixed on you.</span></div>
+      </div>
+      <p class="tagline">LoveApp gives you the plan. <em>Michael Collins AI makes sure you execute it</em> — without a single misstep.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- TESTIMONIALS -->
+<section id="proof">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Real women, real words</span>
+      <h2>"It honestly feels like Michael is talking directly to me."</h2>
+    </div>
+    <div class="tgrid">
+      <div class="tcard reveal">
+        <div class="stars"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+        <p>"I don't understand anything about technology, but it's really simple to use. The responses are fast and genuinely helpful — it honestly feels like Michael is talking directly to me. It was the first time I truly felt confident replying to my partner."</p>
+        <div class="who"><div class="av" style="background:linear-gradient(150deg,#c77,#a55)">R</div><div><div class="nm">Rebecca T.</div><div class="vf"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Verified member</div></div></div>
+      </div>
+
+      <div class="tcard reveal s2">
+        <div class="stars"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+        <p>"I had already been blocked by my ex-husband — I couldn't reach him at all. So I asked the AI for help with a strategy, and I couldn't believe it actually worked. When he started talking to me again, I cried from emotion. It felt impossible."</p>
+        <div class="who"><div class="av" style="background:linear-gradient(150deg,#7a5cff,#b06bff)">D</div><div><div class="nm">Diane K.</div><div class="vf"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Verified member</div></div></div>
+      </div>
+
+      <div class="tcard reveal s3">
+        <div class="stars"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+        <p>"My situation was very specific, so I decided to try it — and wow, it really is different. I sent screenshots, and it told me exactly how to respond. It was surreal."</p>
+        <div class="who"><div class="av" style="background:linear-gradient(150deg,#5fbf8e,#3f8f6a)">S</div><div><div class="nm">Sophia M.</div><div class="vf"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Verified member</div></div></div>
+      </div>
+
+      <div class="tcard reveal">
+        <div class="stars"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+        <p>"I thought $27 a month was a lot at first, but the advice was worth every penny. The 24/7 guidance is priceless. I stopped making the same mistakes, and my relationship improved so much."</p>
+        <div class="who"><div class="av" style="background:linear-gradient(150deg,#d49a3f,#b57e2e)">A</div><div><div class="nm">Amanda L.</div><div class="vf"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Verified member</div></div></div>
+      </div>
+
+      <div class="tcard reveal s2">
+        <div class="stars"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+        <p>"I was skeptical, but after a few weeks of applying the guidance, my partner became so much more engaged. It truly helped me understand him better and build a stronger, more solid relationship."</p>
+        <div class="who"><div class="av" style="background:linear-gradient(150deg,#5c8fd6,#3f6aa8)">J</div><div><div class="nm">Janet P.</div><div class="vf"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Verified member</div></div></div>
+      </div>
+
+      <div class="tcard reveal s3">
+        <div class="stars"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 8.9l6.9-.6z"/></svg></div>
+        <p>"I was hesitant to commit, but the 60-day guarantee gave me total peace of mind. Today my relationship is so much better — honestly the best decision I've made."</p>
+        <div class="who"><div class="av" style="background:linear-gradient(150deg,#b06bff,#7a5cff)">C</div><div><div class="nm">Carol B.</div><div class="vf"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Verified member</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- OFFER / PRICING -->
+<section id="offer">
+  <div class="wrap">
+    <div class="value">
+      <div class="sec-head reveal" style="margin-bottom:0;">
+        <span class="label">Your exclusive upgrade</span>
+        <h2>For years, this level of guidance cost $2,000 a month.</h2>
+        <p>One-on-one consulting with me ran well over $2,000/month — and even then, I could never be there at the exact moment a doubt came up. Out of respect for the women who paid that, Michael Collins AI could reasonably cost between $200 and $500.</p>
+      </div>
+
+      <div class="price-strike reveal s2">
+        <div class="was">One-on-one consulting: <s>$2,000 / month</s></div>
+        <div class="arrow">↓</div>
+        <div class="was">A fair price would be <s>$200–$500</s></div>
+        <div class="arrow">↓</div>
+        <div class="was" style="color:var(--gold);font-weight:600;">Today, as a LoveApp member:</div>
+      </div>
+
+      <!-- price card -->
+      <div class="pricecard reveal s2">
+        <span class="pc-badge">Members-only price</span>
+        <div class="pricecard-in">
+          <div class="pc-name">Michael Collins AI</div>
+          <div class="pc-price"><span class="cur">$</span><span class="amt">27</span><span class="per">/ month</span></div>
+          <div class="pc-sub">That's less than <strong>$1 a day</strong> — cancel anytime in one click.</div>
+
+          <div class="pc-feat">
+            <div class="f"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>My virtual clone, available <strong>24/7</strong> — analyzing your screenshots, voice notes, and texts</span></div>
+            <div class="f"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Real-time, word-for-word guidance on <strong>what</strong> to say and <strong>when</strong></span></div>
+            <div class="f"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Trained on 36+ years of experience and all 21 Dopamine Seeds</span></div>
+            <div class="f"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span>Full <strong>60-day</strong> money-back guarantee — keep everything either way</span></div>
+          </div>
+
+          <a href="#" class="btn btn-gold">Confirm my upgrade — <span class="px">$27/mo</span></a>
+          <div class="cta-note" style="justify-content:center;">
+            <span><svg fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15a3 3 0 100-6 3 3 0 000 6zM5 11V8a7 7 0 0114 0v3"/></svg>Secure checkout · cancel anytime</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="reveal" style="margin-top:28px;font-size:14.5px;color:var(--muted);">This offer only appears here, before you begin — because it only makes sense <em>before</em> your first message. If you close this page, it's gone.</p>
+
+      <!-- guarantee -->
+      <div class="guarantee reveal s2">
+        <div class="seal"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2l7 4v6c0 5-3.4 8.5-7 10-3.6-1.5-7-5-7-10V6l7-4z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg></div>
+        <div>
+          <h4>60-day "use it fully" guarantee</h4>
+          <p>Send every screenshot, question and reply. Apply the guidance. If within 60 days you don't feel significantly more confident, in control, and seeing real results — I insist you request a refund. You keep everything you've already received as a thank-you for your trust.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- CLOSE -->
+<section id="close">
+  <div class="wrap close">
+    <span class="label reveal">One honest question</span>
+    <p class="q reveal s2">"Am I ready to guide this story the right way — with <em>confidence</em>, <em>clarity</em>, and without the fear of messing it up?"</p>
+    <p class="reveal s2">You don't have to keep staring at your phone, not knowing what to say, afraid of ruining everything. You won't go through this alone anymore. For less than $1 a day, you'll have precise, real-time guidance, 24 hours a day — so a single message sent at the wrong moment never costs you the man you love.</p>
+    <p class="reveal s3" style="color:var(--ink);font-family:var(--disp);font-size:20px;">You deserve a love that is calm, reciprocated, and secure. And I'll be here to make sure you get there.</p>
+    <div class="reveal s3" style="margin-top:30px;"><a href="#offer" class="btn btn-gold">Unlock Michael Collins AI — <span class="px">$27/mo</span></a></div>
+    <p class="sig reveal s3">— See you on the other side. Michael</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label">Before you decide</span>
+      <h2>Still have questions? Let me clear them up.</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>If LoveApp is already personalized, why do I need Michael Collins AI?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>LoveApp creates your <strong>perfect plan</strong> — it customizes every Dopamine Seed for your situation. But there's one thing no app can predict in advance: <em>his real-time reaction</em>. Every message, every silence, every shift in mood changes the timing of the next phrase. That's where Michael Collins AI comes in — it reads his behavior in that exact moment and guides you on when to send, when to wait, what to say, and how to adjust. LoveApp creates the plan; the AI guides the execution.</p></div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>Does it really understand my specific situation?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Yes. It was trained on 36 years of clinical experience, all 21 Dopamine Seeds, every LoveApp module, and hundreds of real cases from women just like you. It interprets the type of man, his emotional state, the situation between you, and your goal — and most importantly, the messages he sends you in real time. It doesn't guess; it reads the context and gives the most precise response for <em>your</em> situation.</p></div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>I'm not good with technology. Will I be able to use it?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Absolutely. If you can send a message on your phone, you already know how to use it. You'll get a simple step-by-step guide showing you how to open the chat, pin it to your phone, and send screenshots, voice messages, and texts. It's like talking to a friend — except this friend is an expert in the male mind.</p></div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>Is this a subscription? Can I cancel?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Yes — because the AI needs to be available 24/7 to guide you in real time, which requires dedicated servers. But you're always in full control. You can cancel anytime with <strong>one click</strong> — no calls, no explanations, no fees, no fine print. And you're protected by a full 60-day guarantee: if you don't feel more security, clarity, and control, I'll refund 100% of what you paid.</p></div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>What if it doesn't work for my specific case?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>Whatever your situation — an ex, someone you're seeing casually, a distant husband, a cold man, a confusing relationship — it adapts everything to <em>your</em> case. And if within 60 days you feel it didn't help you feel more confident, secure, and in control, I'll refund 100% of your investment, no questions asked. You take zero risk.</p></div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" onclick="tog(this)"><span>Is this just a trick to manipulate someone?</span><span class="pm"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner"><p>No. It's a communication coach — it helps you express yourself clearly and choose your timing with confidence, instead of reacting on impulse at 2am. It can't, and won't, control how anyone else feels or decides. You're always the one who chooses what to send.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL BAND -->
+<section style="padding-top:20px;">
+  <div class="wrap">
+    <div class="band reveal">
+      <span class="label">This page won't be here later</span>
+      <h2>Take the most important step — and make sure no single message puts it all at risk.</h2>
+      <p>You've already done the hard part by joining LoveApp. Now give yourself the one thing that makes the difference between moving forward and accidentally undoing it all: an expert beside you, the moment he replies.</p>
+      <a href="#offer" class="btn btn-gold">Yes — unlock my access for <span class="px">$27/mo</span></a>
+      <div class="cta-note" style="justify-content:center;">
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>60-day guarantee</span>
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Cancel in 1 click</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="orb"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9z"/></svg></span><span>Michael Collins <span style="color:var(--gold)">AI</span></span></div>
+    <p class="disc">Michael Collins AI is a communication and self-development tool designed to help <em>you</em> express yourself with more clarity and confidence. It does not control, and cannot guarantee, how any other person thinks, feels, or responds. Individual results vary and depend on your situation and effort. Testimonials reflect individual experiences and are not a promise of outcomes. This page is an optional upgrade for LoveApp members.</p>
+    <div class="foot-links"><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Support</a><a href="#">Cancel anytime</a></div>
+  </div>
+</footer>
+
+</div><!-- /content -->
+
+<!-- STICKY BAR -->
+<div class="stickybar" id="stickybar">
+  <div class="wrap sb-in">
+    <div class="sb-l"><span class="a">Michael Collins AI · $27/mo</span><span class="b">Less than $1/day · cancel anytime · 60-day guarantee</span></div>
+    <a href="#offer" class="btn btn-gold btn-sm">Upgrade now</a>
+  </div>
+</div>
+
+<script>
+  // FAQ accordion
+  function tog(btn){
+    var open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+  }
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  // Sticky CTA after hero
+  var bar = document.getElementById('stickybar');
+  var hero = document.querySelector('header');
+  var so = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ bar.classList.toggle('show', !e.isIntersecting); });
+  }, {threshold:0});
+  if(hero) so.observe(hero);
+</script>
+</body>
+</html>

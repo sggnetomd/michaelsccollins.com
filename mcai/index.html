@@ -171,6 +171,7 @@
   .ph-top{display:flex;align-items:center;gap:11px;padding:18px 16px 14px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#11131c,#0c0d14);}
   .ph-top .av{width:38px;height:38px;border-radius:11px;background:linear-gradient(150deg,var(--gold),var(--gold-deep));display:grid;place-items:center;color:#1a1206;}
   .ph-top .av svg{width:20px;height:20px;}
+  .ph-top img.av{background:none;border-radius:50%;object-fit:cover;}
   .ph-top .nm{font-family:var(--disp);font-weight:600;font-size:15px;}
   .ph-top .on{font-size:11.5px;color:var(--green);display:flex;align-items:center;gap:5px;margin-top:1px;}
   .ph-top .on i{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;}
@@ -311,7 +312,6 @@
       <img class="orb" src="mci-avatar.png" alt="Michael Collins" width="30" height="30">
       <span>Michael Collins <span style="color:var(--gold)">AI</span><small>Your private clone · 24/7</small></span>
     </div>
-    <a href="#offer" class="btn btn-gold btn-sm nav-cta">Upgrade — <span class="px">$27/mo</span></a>
   </div>
 </nav>
 
@@ -331,13 +331,21 @@
       </div>
     </div>
 
-    <!-- VSL -->
-    <div class="vsl reveal s2">
-      <div class="vsl-frame">
-        <div class="vsl-tag"><span class="rec"></span>Watch · 3 min · sound on</div>
-        <div class="vsl-play"><button aria-label="Play video"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button></div>
+    <!-- HERO MOCKUP (chat) -->
+    <div class="phone reveal s2" style="margin:26px auto 6px;">
+      <div class="phone-scr">
+        <div class="ph-top">
+          <img class="av" src="mci-avatar.png" alt="Michael Collins" width="38" height="38">
+          <div><div class="nm">Michael Collins AI</div><div class="on"><i></i>online · typically replies instantly</div></div>
+        </div>
+        <div class="ph-body">
+          <div class="m me">He left me on read for 2 days 😖 do I text him or just wait?</div>
+          <div class="typing"><i></i><i></i><i></i></div>
+          <div class="m ai">Wait. Texting now reads as anxious — and that lowers your value in his mind.</div>
+          <div class="m ai"><b>Silence is your leverage</b> right now. He'll resurface — they always do.</div>
+          <div class="m ai">The second he does, paste his message here. I'll give you the exact reply, word for word. 💛</div>
+        </div>
       </div>
-      <p class="vsl-cap">Press play — Michael explains the one mistake that quietly sabotages most women in their first hours.</p>
     </div>
 
     <div class="trust reveal s3">
@@ -448,7 +456,7 @@
       <div class="phone reveal s2">
         <div class="phone-scr">
           <div class="ph-top">
-            <div class="av"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.6 4.6L18 9l-4.4 1.4L12 15l-1.6-4.6L6 9z"/></svg></div>
+            <img class="av" src="mci-avatar.png" alt="Michael Collins" width="38" height="38">
             <div><div class="nm">Michael Collins AI</div><div class="on"><i></i>online · typically replies instantly</div></div>
           </div>
           <div class="ph-body">

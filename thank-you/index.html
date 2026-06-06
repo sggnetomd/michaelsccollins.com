@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to LoveApp — Your Purchase is Confirmed</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-50: #FFF0F3;
+    --pink-100: #FFD6E0;
+    --pink-200: #FFB3C6;
+    --pink-500: #E8365D;
+    --pink-600: #D42B50;
+    --pink-700: #B91C42;
+    --red-gradient: linear-gradient(135deg, #E8365D 0%, #FF6B8A 100%);
+    --green-500: #22C55E;
+    --green-600: #16A34A;
+    --green-gradient: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-400: #9CA3AF;
+    --gray-500: #6B7280;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --amber-50: #FFFBEB;
+    --amber-100: #FEF3C7;
+    --amber-500: #F59E0B;
+    --amber-600: #D97706;
+    --amber-700: #B45309;
+    --blue-50: #EFF6FF;
+    --blue-500: #3B82F6;
+    --blue-600: #2563EB;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-700);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 0 60px 0;
+    background: #fff;
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.06);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--red-gradient);
+    padding: 36px 24px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; left: -30px;
+    width: 80px; height: 80px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+  .header .check-icon {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    backdrop-filter: blur(4px);
+  }
+  .header .check-icon svg { width: 28px; height: 28px; }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .header .subtitle {
+    color: rgba(255,255,255,0.9);
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 28px 24px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .section:last-child { border-bottom: none; }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--pink-500);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--gray-800);
+    margin-bottom: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  .section p {
+    font-size: 15px;
+    color: var(--gray-600);
+    line-height: 1.65;
+  }
+
+  /* ── BILLING ALERT ── */
+  .billing-alert {
+    background: var(--amber-50);
+    border: 2px solid var(--amber-500);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 0 24px;
+    transform: translateY(-24px);
+    position: relative;
+    z-index: 2;
+    box-shadow: var(--shadow-md);
+  }
+  .billing-alert .alert-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .billing-alert .alert-icon {
+    width: 36px; height: 36px;
+    background: var(--amber-500);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .billing-alert .alert-icon svg { width: 20px; height: 20px; }
+  .billing-alert .alert-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--amber-700);
+    line-height: 1.3;
+  }
+  .billing-alert p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .descriptor-box {
+    background: #fff;
+    border: 2px dashed var(--amber-500);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .descriptor-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-400);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .descriptor-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gray-800);
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    word-break: break-all;
+  }
+  .descriptor-note {
+    font-size: 12px;
+    color: var(--gray-500);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ── ORDER SUMMARY ── */
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .order-item:last-child { border-bottom: none; }
+  .order-item .item-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+  .order-item .item-type {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 2px;
+  }
+  .order-item .item-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-800);
+  }
+  .order-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0 0;
+    border-top: 2px solid var(--gray-200);
+    margin-top: 4px;
+  }
+  .order-total .total-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-800);
+  }
+  .order-total .total-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pink-500);
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--green-gradient);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 14px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(34,197,94,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  .cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(34,197,94,0.45);
+  }
+  .cta-btn-secondary {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--pink-50);
+    color: var(--pink-600);
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 12px;
+    text-decoration: none;
+    border: 2px solid var(--pink-200);
+    margin-top: 12px;
+    transition: background 0.15s;
+  }
+  .cta-btn-secondary:hover { background: var(--pink-100); }
+
+  /* ── STEPS ── */
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+  }
+  .step + .step { border-top: 1px solid var(--gray-100); }
+  .step-number {
+    width: 36px; height: 36px;
+    background: var(--red-gradient);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.55;
+  }
+
+  /* ── TIMELINE / WHAT TO EXPECT ── */
+  .timeline-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    position: relative;
+  }
+  .timeline-item + .timeline-item { border-top: 1px solid var(--gray-100); }
+  .timeline-day {
+    width: 52px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .timeline-day .day-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--pink-500);
+    background: var(--pink-50);
+    padding: 4px 10px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+  .timeline-content h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 3px;
+  }
+  .timeline-content p {
+    font-size: 13px;
+    color: var(--gray-500);
+    line-height: 1.5;
+  }
+
+  /* ── SUBSCRIPTION INFO ── */
+  .sub-card {
+    background: var(--blue-50);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+  .sub-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sub-card p {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+  .sub-card .renewal-info {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue-600);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid var(--gray-100);
+    padding: 16px 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-800);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .faq-q .toggle {
+    width: 24px; height: 24px;
+    background: var(--gray-100);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    font-size: 14px;
+    color: var(--gray-500);
+    font-weight: 600;
+  }
+  .faq-item.open .faq-q .toggle { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 14px;
+    color: var(--gray-500);
+    line-height: 1.6;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding-top: 0;
+  }
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding-top: 12px;
+  }
+
+  /* ── SUPPORT ── */
+  .support-box {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .support-box .support-emoji {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  .support-box h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 6px;
+  }
+  .support-box p {
+    font-size: 14px;
+    color: var(--gray-500);
+    margin-bottom: 14px;
+  }
+  .support-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pink-600);
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .support-email:hover { border-color: var(--pink-500); }
+  .support-email svg { width: 16px; height: 16px; }
+
+  /* ── CANCEL LINK ── */
+  .cancel-section {
+    text-align: center;
+    padding: 24px;
+  }
+  .cancel-link {
+    font-size: 14px;
+    color: var(--gray-400);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .cancel-link:hover { color: var(--gray-600); }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 24px;
+    text-align: center;
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+  }
+  .footer p {
+    font-size: 12px;
+    color: var(--gray-400);
+    line-height: 1.6;
+  }
+  .footer a { color: var(--gray-500); }
+
+  /* ── GUARANTEE BADGE ── */
+  .guarantee {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #F0FDF4;
+    border: 1px solid rgba(34,197,94,0.2);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 20px;
+  }
+  .guarantee-icon {
+    width: 44px; height: 44px;
+    flex-shrink: 0;
+  }
+  .guarantee h4 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #166534;
+    margin-bottom: 2px;
+  }
+  .guarantee p {
+    font-size: 13px;
+    color: #4D7C5F;
+    line-height: 1.45;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .page-wrapper { box-shadow: none; }
+    .header h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<!-- Begin of Digistore24 Trusted Badge Code -->
+<script type="text/javascript" src="https://www.digistore24.com/trusted-badge/46159/4L1NpzVZESIUmcd/thankyoupage"></script>
+<!-- End of Digistore24 Trusted Badge Code -->
+
+<div class="page-wrapper">
+
+  <!-- ═══════════ HEADER ═══════════ -->
+  <div class="header">
+    <div class="check-icon">
+      <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="3">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+      </svg>
+    </div>
+    <h1>Congratulations!</h1>
+    <div class="subtitle">Your LoveApp purchase is confirmed</div>
+  </div>
+
+  <!-- ═══════════ BILLING DESCRIPTOR ALERT ═══════════ -->
+  <div class="billing-alert">
+    <div class="alert-header">
+      <div class="alert-icon">
+        <svg fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+        </svg>
+      </div>
+      <div class="alert-title">Important: Save This for Your Records</div>
+    </div>
+    <p>Your purchase will appear on your credit card or bank statement with the name below. <strong>Please save this so you recognize the charge:</strong></p>
+    <div class="descriptor-box">
+      <div class="descriptor-label">Charge name on your statement</div>
+      <div class="descriptor-value">CARTPANDA*CARTPANDAGLOBAL</div>
+      <div class="descriptor-note">This is our secure payment processor — it's not fraud, it's your LoveApp purchase.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════ ACCESS YOUR APP ═══════════ -->
+  <div class="section">
+    <div class="section-title">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      GET STARTED
+    </div>
+    <div class="section-heading">Access Your Dopamine Seeds Now</div>
+    <p>Your 21 personalized phrases are ready. Tap the button below to open LoveApp and generate your first Dopamine Seed right away.</p>
+
+    <a href="#" class="cta-btn">&#9889; OPEN MY LOVEAPP</a>
+
+    <div class="guarantee">
+      <svg class="guarantee-icon" viewBox="0 0 44 44" fill="none">
+        <circle cx="22" cy="22" r="22" fill="#BBF7D0"/>
+        <circle cx="22" cy="22" r="16" fill="#22C55E"/>
+        <path d="M15 22l4 4 8-8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <h4>30-Day Money-Back Guarantee</h4>
+        <p>Not satisfied? Email us anytime within 30 days for a full, no-questions-asked refund.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ HOW TO USE ═══════════ -->
+  <div class="section">
+    <div class="section-title">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      GETTING STARTED
+    </div>
+    <div class="section-heading">How It Works — 3 Simple Steps</div>
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h4>Open Your LoveApp</h4>
+        <p>Click the green button above or use the link sent to your email. No downloads needed — it works right in your browser.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h4>Answer a Few Quick Questions</h4>
+        <p>Tell us about your situation — the app personalizes your 21 Dopamine Seeds based on your specific relationship.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h4>Send Your First Phrase</h4>
+        <p>Start with the "Nostalgia Effect Phrase" — just 6 words that trigger powerful positive memories in his brain. Copy it, send it, and watch what happens.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ WHAT TO EXPECT ═══════════ -->
+  <div class="section">
+    <div class="section-title">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+      YOUR FIRST WEEK
+    </div>
+    <div class="section-heading">Here's What to Expect</div>
+
+    <div class="timeline-item">
+      <div class="timeline-day"><span class="day-num">Today</span></div>
+      <div class="timeline-content">
+        <h4>Generate Your Seeds</h4>
+        <p>Open the app, answer the questions, and get your 21 personalized Dopamine Seeds.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-day"><span class="day-num">Day 1</span></div>
+      <div class="timeline-content">
+        <h4>Send the Nostalgia Phrase</h4>
+        <p>Start with the most powerful seed — it takes 10 seconds to send and plants the first hook in his mind.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-day"><span class="day-num">Day 3</span></div>
+      <div class="timeline-content">
+        <h4>Layer Your Second Seed</h4>
+        <p>By now he's already thinking about you more. The second phrase deepens the dopamine response.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-day"><span class="day-num">Day 7</span></div>
+      <div class="timeline-content">
+        <h4>Watch the Shift</h4>
+        <p>Most women notice a clear change in his behavior within the first week — more texts, more attention, more effort.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SUBSCRIPTION INFO ═══════════ -->
+  <div class="section" id="subscriptions">
+    <div class="section-title">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+      SUBSCRIPTION DETAILS
+    </div>
+    <div class="section-heading">Your Active Subscriptions</div>
+    <p style="margin-bottom: 16px;">If you purchased any of the optional add-ons during checkout, here's what to expect:</p>
+
+    <div class="sub-card">
+      <h4>&#x1F916; Michael Collins AI Assistant</h4>
+      <p>Your personal AI relationship coach on Telegram. Get instant advice anytime, 24/7.</p>
+      <div class="renewal-info">
+        <svg fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        Renews monthly · You'll receive an email reminder 3 days before each charge
+      </div>
+    </div>
+
+    <div class="sub-card">
+      <h4>&#x1F46B; Love Life Club</h4>
+      <p>Exclusive community with weekly live sessions and member support.</p>
+      <div class="renewal-info">
+        <svg fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        Renews monthly · You'll receive an email reminder 3 days before each charge
+      </div>
+    </div>
+
+    <p style="font-size: 14px; color: var(--gray-500); margin-top: 16px; text-align: center;">
+      <strong>Want to cancel?</strong> You can cancel any subscription instantly — no phone calls, no waiting.
+    </p>
+    <a href="#" class="cta-btn-secondary">Manage My Subscriptions</a>
+  </div>
+
+  <!-- ═══════════ ORDER SUMMARY ═══════════ -->
+  <div class="section">
+    <div class="section-title">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/></svg>
+      ORDER SUMMARY
+    </div>
+
+    <div class="order-item">
+      <div>
+        <div class="item-name">LoveApp — 21 Dopamine Seeds</div>
+        <div class="item-type">One-time purchase</div>
+      </div>
+      <div class="item-price">$47.00</div>
+    </div>
+
+    <!-- Dynamic items would be inserted here based on what the customer purchased -->
+    <p style="font-size: 13px; color: var(--gray-400); margin-top: 12px; text-align: center; font-style: italic;">Additional items from checkout (if any) are listed in your confirmation email.</p>
+
+    <div style="background: var(--amber-50); border-radius: 10px; padding: 12px 16px; margin-top: 16px; display: flex; align-items: flex-start; gap: 10px;">
+      <span style="font-size: 18px; flex-shrink: 0;">&#x1F4B3;</span>
+      <p style="font-size: 13px; color: var(--amber-700); line-height: 1.5; margin: 0;">
+        <strong>Remember:</strong> This charge appears on your statement as <strong>CARTPANDA*CARTPANDAGLOBAL</strong>. This is us — not a fraudulent charge.
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <div class="section">
+    <div class="section-title">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      COMMON QUESTIONS
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>I don't recognize a charge on my card. Is it fraud?</span>
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        No! Your LoveApp purchase appears as <strong>"CARTPANDA*CARTPANDAGLOBAL"</strong> on your bank statement. This is our secure payment processor. If you see this charge, it's from your purchase today — not fraud. If you have any concerns, email us and we'll help right away.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>How do I access my Dopamine Seeds?</span>
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        Click the green "OPEN MY LOVEAPP" button at the top of this page. You can also use the link we sent to your email. The app works in your browser — no download required. Tip: check your spam folder if you don't see our email.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>How do I cancel a subscription?</span>
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        You can cancel any subscription instantly by clicking the "Manage My Subscriptions" button above, or by emailing us at <strong>loveapp.michaelcollins@gmail.com</strong>. No phone calls needed, no waiting — cancellations are processed within 24 hours.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>Can I get a refund?</span>
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        Absolutely. We offer a <strong>30-day money-back guarantee</strong>. If you're not satisfied for any reason, email us at <strong>loveapp.michaelcollins@gmail.com</strong> and we'll process your full refund within 24 hours. No questions asked.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>When will I be charged again?</span>
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        LoveApp itself is a <strong>one-time purchase</strong> — you will not be charged again for it. If you added the Michael Collins AI Assistant or Love Life Club, those are monthly subscriptions. You'll receive a reminder email 3 days before each renewal so there are no surprises.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        <span>I didn't receive my access email. What do I do?</span>
+        <span class="toggle">+</span>
+      </div>
+      <div class="faq-a">
+        First, check your <strong>spam/junk folder</strong> — our emails sometimes end up there. If you still can't find it, click the green "OPEN MY LOVEAPP" button at the top of this page for instant access. You can also email us and we'll resend your access link right away.
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SUPPORT ═══════════ -->
+  <div class="section">
+    <div class="support-box">
+      <div class="support-emoji">&#x1F49C;</div>
+      <h4>We're Here to Help</h4>
+      <p>Have a question, need help with the app, or want a refund? We respond within 24 hours.</p>
+      <a href="mailto:loveapp.michaelcollins@gmail.com" class="support-email">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        loveapp.michaelcollins@gmail.com
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══════════ CANCEL SECTION ═══════════ -->
+  <div class="cancel-section">
+    <a href="#" class="cancel-link">Cancel subscription</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="#" class="cancel-link">Request a refund</a>
+    &nbsp;&nbsp;·&nbsp;&nbsp;
+    <a href="#" class="cancel-link">Privacy Policy</a>
+  </div>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <div class="footer">
+    <p>© 2026 LoveApp by Michael Collins · All rights reserved<br>
+    This purchase will appear on your statement as <strong>CARTPANDA*CARTPANDAGLOBAL</strong></p>
+  </div>
+
+</div>
+
+<script>
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
